@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "dev": "rspack serve",
+    "dev": "concurrently \"bun run res:dev\" \"rspack serve\"",
     "build": "rspack build",
     "res:build": "rescript",
     "res:dev": "rescript build -w",
@@ -21,6 +21,7 @@
     "@svgr/webpack": "^8.1.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "concurrently": "^8.2.1",
     "typescript": "^5.0.4",
     "webpack-bundle-analyzer": "^4.9.1"
   }
