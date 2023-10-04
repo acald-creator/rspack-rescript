@@ -20,7 +20,7 @@ let make = () => {
         <Logo className="logo react" alt="React logo" />
       </a>
     </div>
-    <h1> {React.string("Rspack + React + TypeScript on Bun")} </h1>
+    <h1> {React.string("Rspack + Rescript & React + TypeScript on Bun")} </h1>
     <div className="card">
       <button onClick> {React.string("count is " ++ string_of_int(count))} </button>
       <p>
