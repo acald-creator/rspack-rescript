@@ -1,7 +1,8 @@
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+  const rspack = require("@rspack/core");
 const ReactRefreshPlugin = require('@rspack/plugin-react-refresh');
-const isDev = process.env.NODE_ENV === "development";
+const isProduction = process.env.NODE_ENV === "production"
 
 /**
  * @type {import('@rspack/cli').Configuration}
@@ -9,25 +10,21 @@ const isDev = process.env.NODE_ENV === "development";
 module.exports = {
   plugins: [
     // new BundleAnalyzerPlugin(),
-    new ReactRefreshPlugin(),
-  ],
+    new rspack.HtmlRspackPlugin({ template: "./index.html" }),
+		new rspack.DefinePlugin({ "process.env.NODE_ENV": "'development'" }),
+		!isProduction && new ReactRefreshPlugin(),
+	].filter(Boolean),
   experiments: {
     rspackFuture: {
       disableTransformByDefault: true,
     },
   },
-  mode: isDev ? "development" : "production",
+  mode: isProduction ? "production" : "development",
   context: __dirname,
   entry: {
     main: "./src/main.bs.js",
   },
-  builtins: {
-    html: [
-      {
-        template: "./index.html",
-      },
-    ],
-  },
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -40,6 +37,7 @@ module.exports = {
         use: {
           loader: "builtin:swc-loader",
           options: {
+            sourceMap: true,
             jsc: {
               parser: {
                 syntax: "typescript",
@@ -47,8 +45,9 @@ module.exports = {
               },
               transform: {
                 react: {
-                  development: isDev,
-                  refresh: isDev,
+                  runtime: "automatic",
+                  development: !isProduction,
+									refresh: !isProduction,
                 },
               },
             },
