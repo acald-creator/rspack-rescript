@@ -1,13 +1,18 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.2.2/schema.json",
 	"organizeImports": {
-		"enabled": true
+		"enabled": true,
+		"ignore": ["dist", "*.bs.js", "lib"]
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true
 		},
-		"ignore": ["dist", "*.bs.js"]
+		"ignore": ["dist", "*.bs.js", "lib"]
+	},
+	"formatter": {
+		"enabled": true,
+		"ignore": ["dist", "*.bs.js", "lib"]
 	}
 }
