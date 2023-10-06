@@ -9,7 +9,7 @@
     "res:dev": "rescript build -w",
     "res:clean": "rescript clean -with-deps",
     "prepare": "husky install",
-    "commit": "cz"
+    "commit": "git-cz"
   },
   "dependencies": {
     "@rescript/core": "^0.5.0",
@@ -35,5 +35,10 @@
     "inquirer": "^9.2.11",
     "typescript": "^5.0.4",
     "webpack-bundle-analyzer": "^4.9.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   }
 }
