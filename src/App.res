@@ -1,4 +1,9 @@
-Emotion.injectGlobal(`
+open Container
+open Button
+open Label
+open Input
+
+Emotion.Css.injectGlobal(`
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -56,7 +61,7 @@ let make = () => {
     setCount(prev => prev + 1)
   }
 
-  <div className="App">
+  <Container>
     <div>
       <a href="https://reactjs.org" target="_blank">
         <Logo className="logo react" alt="React logo" />
@@ -64,8 +69,14 @@ let make = () => {
     </div>
     <h1> {React.string("Rspack + Rescript & React + TypeScript on Bun")} </h1>
     <div className="card">
-      <button onClick> {React.string("count is " ++ string_of_int(count))} </button>
+      <Button onClick> {React.string("count is " ++ string_of_int(count))} </Button>
       <p>
+        {React.string("Example Input field below")}
+        <br />
+        <Input />
+        <br />
+        <Label> {React.string("Example label")} </Label>
+        <br />
         {React.string("Edit ")}
         <code> {React.string("src/App.res")} </code>
         {React.string(" and save to test HMR")}
@@ -74,5 +85,5 @@ let make = () => {
     <p className="read-the-docs">
       {React.string("Click on the Rspack and React logos to learn more")}
     </p>
-  </div>
+  </Container>
 }
