@@ -9,7 +9,11 @@
     "res:dev": "rescript build -w",
     "res:clean": "rescript clean -with-deps",
     "prepare": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "format:check": "biome check .",
+    "format:write": "biome write .",
+    "lint:check": "biome lint .",
+    "lint": "biome lint --apply ."
   },
   "dependencies": {
     "@rescript/core": "^0.5.0",
