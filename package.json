@@ -19,6 +19,7 @@
     "rescript": "^10.1.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.2.2",
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@commitlint/cz-commitlint": "^17.7.2",
