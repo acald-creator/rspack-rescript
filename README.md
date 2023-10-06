@@ -1,24 +1,35 @@
 Rspack & Rescript with Bun
 
+## Features
+- `commitizen`
+- `commitlint`
+- `biome.js`
+- `husky`
+- `release-please` (future)
+
 ## How to get started
 
 Ensure you have `bun` installed on your local machine.
 
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
 Run `bun install` to install dependencies.
 
-To build `rescript` files
+To build `.res` files
 
 ```bash
 bun run res:build
 ```
 
-To build `rspack` for production
+To build for production with `rspack`
 
 ```bash
 bun run build
 ```
 
-To test your local changes, run `bun run res:build` to build the `rescript` files
+To test your local changes, run `bun run res:build` to build the `.res` files
 
 And then
 
@@ -27,3 +38,5 @@ bun run res:dev
 ```
 
 in order to see your local changes at `http://localhost:8080`
+
+This app is also deployed via Vercel.sh.
