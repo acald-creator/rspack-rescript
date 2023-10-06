@@ -16,6 +16,7 @@
     "lint": "biome lint --apply ."
   },
   "dependencies": {
+    "@emotion/css": "^11.11.2",
     "@rescript/core": "^0.5.0",
     "@rescript/react": "^0.11.0",
     "react": "^18.2.0",
