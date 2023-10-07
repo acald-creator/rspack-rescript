@@ -2,6 +2,7 @@
   "name": "rspack-rescript-react",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "concurrently \"bun run res:dev\" \"rspack serve\"",
     "build": "cross-env NODE_ENV=production rspack build",
@@ -13,7 +14,8 @@
     "format:check": "biome check .",
     "format:write": "biome format . --write",
     "lint:check": "biome lint .",
-    "lint": "biome lint --apply ."
+    "lint": "biome lint --apply .",
+    "test": "retest __tests__/*.bs.js"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
@@ -29,10 +31,12 @@
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
     "@commitlint/cz-commitlint": "^17.7.2",
+    "@glennsl/rescript-jest": "^0.10.0",
     "@rspack/cli": "latest",
     "@rspack/core": "^0.3.6",
     "@rspack/plugin-react-refresh": "^0.3.6",
     "@svgr/webpack": "^8.1.0",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "commitizen": "^4.3.0",
@@ -40,6 +44,9 @@
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
     "inquirer": "^9.2.11",
+    "rescript-js": "^1.0.0-beta.2",
+    "rescript-nodejs": "^15.0.0",
+    "rescript-test": "^5.0.0",
     "typescript": "^5.0.4",
     "webpack-bundle-analyzer": "^4.9.1"
   },

@@ -4,6 +4,11 @@
 		{
 			"dir": "src",
 			"subdirs": true
+		},
+		{
+			"dir": "__tests__",
+			"subdirs": true,
+			"type": "dev"
 		}
 	],
 	"package-specs": [
@@ -14,6 +19,12 @@
 	],
 	"suffix": ".bs.js",
 	"bs-dependencies": ["@rescript/core", "@rescript/react"],
+	"bs-dev-dependencies": [
+		"rescript-test",
+		"@glennsl/rescript-jest",
+		"rescript-nodejs",
+		"rescript-js"
+	],
 	"jsx": {
 		"version": 4,
 		"mode": "automatic"
