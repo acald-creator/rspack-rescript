@@ -1,3 +1,5 @@
+open App
+
 Emotion.Css.injectGlobal(`
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;

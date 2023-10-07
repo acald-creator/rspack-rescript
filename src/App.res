@@ -53,37 +53,39 @@ module Logo = {
     "default"
 }
 
-@react.component
-let make = () => {
-  let (count, setCount) = React.useState(() => 0)
+module App = {
+  @react.component
+  let make = () => {
+    let (count, setCount) = React.useState(() => 0)
 
-  let onClick = _evt => {
-    setCount(prev => prev + 1)
-  }
+    let onClick = _evt => {
+      setCount(prev => prev + 1)
+    }
 
-  <Container>
-    <div>
-      <a href="https://reactjs.org" target="_blank">
-        <Logo className="logo react" alt="React logo" />
-      </a>
-    </div>
-    <h1> {React.string("Rspack + Rescript & React + TypeScript on Bun")} </h1>
-    <div className="card">
-      <Button onClick> {React.string("count is " ++ string_of_int(count))} </Button>
-      <p>
-        {React.string("Example Input field below")}
-        <br />
-        <Input />
-        <br />
-        <Label> {React.string("Example label")} </Label>
-        <br />
-        {React.string("Edit ")}
-        <code> {React.string("src/App.res")} </code>
-        {React.string(" and save to test HMR")}
+    <Container>
+      <div>
+        <a href="https://reactjs.org" target="_blank">
+          <Logo className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1> {React.string("Rspack + Rescript & React + TypeScript on Bun")} </h1>
+      <div className="card">
+        <Button onClick> {React.string("count is " ++ string_of_int(count))} </Button>
+        <p>
+          {React.string("Example Input field below")}
+          <br />
+          <Input />
+          <br />
+          <Label> {React.string("Example label")} </Label>
+          <br />
+          {React.string("Edit ")}
+          <code> {React.string("src/App.res")} </code>
+          {React.string(" and save to test HMR")}
+        </p>
+      </div>
+      <p className="read-the-docs">
+        {React.string("Click on the Rspack and React logos to learn more")}
       </p>
-    </div>
-    <p className="read-the-docs">
-      {React.string("Click on the Rspack and React logos to learn more")}
-    </p>
-  </Container>
+    </Container>
+  }
 }
