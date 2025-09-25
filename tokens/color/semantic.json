@@ -1,0 +1,40 @@
+{
+	"color": {
+		"brand": {
+			"primary": {
+				"value": "{color.core.primary.500.value}",
+				"comment": "Primary brand color - references core primary"
+			},
+			"primary-hover": {
+				"value": "{color.core.primary.600.value}",
+				"comment": "Hover state for primary"
+			},
+			"primary-light": {
+				"value": "{color.core.primary.400.value}",
+				"comment": "Light variant of primary"
+			},
+			"primary-dark": {
+				"value": "{color.core.primary.700.value}",
+				"comment": "Dark variant of primary"
+			}
+		},
+		"semantic": {
+			"success": {
+				"value": "#10b981",
+				"comment": "Success state color"
+			},
+			"warning": {
+				"value": "#f59e0b",
+				"comment": "Warning state color"
+			},
+			"error": {
+				"value": "#ef4444",
+				"comment": "Error state color"
+			},
+			"info": {
+				"value": "#3b82f6",
+				"comment": "Info state color"
+			}
+		}
+	}
+}

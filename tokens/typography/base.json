@@ -1,0 +1,35 @@
+{
+	"typography": {
+		"family": {
+			"sans": {
+				"value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+				"comment": "Primary sans-serif font family"
+			},
+			"mono": {
+				"value": "ui-monospace, SFMono-Regular, 'SF Mono', Monaco, Consolas, monospace",
+				"comment": "Monospace font family for code"
+			}
+		},
+		"weight": {
+			"thin": { "value": "100", "comment": "Thin font weight" },
+			"light": { "value": "300", "comment": "Light font weight" },
+			"normal": { "value": "400", "comment": "Normal font weight" },
+			"medium": { "value": "500", "comment": "Medium font weight" },
+			"semibold": { "value": "600", "comment": "Semibold font weight" },
+			"bold": { "value": "700", "comment": "Bold font weight" },
+			"extrabold": { "value": "800", "comment": "Extra bold font weight" }
+		},
+		"lineHeight": {
+			"tight": { "value": "1.25", "comment": "Tight line height" },
+			"snug": { "value": "1.375", "comment": "Snug line height" },
+			"normal": { "value": "1.5", "comment": "Normal line height" },
+			"relaxed": { "value": "1.625", "comment": "Relaxed line height" },
+			"loose": { "value": "2", "comment": "Loose line height" }
+		},
+		"letterSpacing": {
+			"tight": { "value": "-0.025em", "comment": "Tight letter spacing" },
+			"normal": { "value": "0", "comment": "Normal letter spacing" },
+			"wide": { "value": "0.025em", "comment": "Wide letter spacing" }
+		}
+	}
+}

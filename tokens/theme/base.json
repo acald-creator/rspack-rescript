@@ -1,0 +1,64 @@
+{
+	"theme": {
+		"light": {
+			"background": {
+				"primary": {
+					"value": "{color.neutral.white.value}",
+					"comment": "Primary background for light theme"
+				},
+				"secondary": {
+					"value": "{color.neutral.gray.50.value}",
+					"comment": "Secondary background for light theme"
+				},
+				"elevated": {
+					"value": "{color.neutral.white.value}",
+					"comment": "Elevated surface background"
+				}
+			},
+			"text": {
+				"primary": {
+					"value": "{color.neutral.gray.900.value}",
+					"comment": "Primary text color for light theme"
+				},
+				"secondary": {
+					"value": "{color.neutral.gray.600.value}",
+					"comment": "Secondary text color for light theme"
+				},
+				"disabled": {
+					"value": "{color.neutral.gray.400.value}",
+					"comment": "Disabled text color for light theme"
+				}
+			}
+		},
+		"dark": {
+			"background": {
+				"primary": {
+					"value": "{color.neutral.gray.900.value}",
+					"comment": "Primary background for dark theme"
+				},
+				"secondary": {
+					"value": "{color.neutral.gray.800.value}",
+					"comment": "Secondary background for dark theme"
+				},
+				"elevated": {
+					"value": "{color.neutral.gray.800.value}",
+					"comment": "Elevated surface background"
+				}
+			},
+			"text": {
+				"primary": {
+					"value": "{color.neutral.gray.50.value}",
+					"comment": "Primary text color for dark theme"
+				},
+				"secondary": {
+					"value": "{color.neutral.gray.300.value}",
+					"comment": "Secondary text color for dark theme"
+				},
+				"disabled": {
+					"value": "{color.neutral.gray.500.value}",
+					"comment": "Disabled text color for dark theme"
+				}
+			}
+		}
+	}
+}

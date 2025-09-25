@@ -1,0 +1,42 @@
+{
+	"color": {
+		"background": {
+			"primary": {
+				"value": "{color.core.neutral.50.value}",
+				"comment": "Primary background - light theme"
+			},
+			"secondary": {
+				"value": "{color.core.neutral.100.value}",
+				"comment": "Secondary background - light theme"
+			},
+			"elevated": {
+				"value": "{color.core.neutral.white.value}",
+				"comment": "Elevated surfaces - light theme"
+			}
+		},
+		"text": {
+			"primary": {
+				"value": "{color.core.neutral.900.value}",
+				"comment": "Primary text - light theme"
+			},
+			"secondary": {
+				"value": "{color.core.neutral.600.value}",
+				"comment": "Secondary text - light theme"
+			},
+			"disabled": {
+				"value": "{color.core.neutral.400.value}",
+				"comment": "Disabled text - light theme"
+			}
+		},
+		"border": {
+			"default": {
+				"value": "{color.core.neutral.200.value}",
+				"comment": "Default border color - light theme"
+			},
+			"focus": {
+				"value": "{color.core.primary.500.value}",
+				"comment": "Focus border color"
+			}
+		}
+	}
+}

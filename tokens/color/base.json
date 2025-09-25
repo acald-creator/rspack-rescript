@@ -1,0 +1,54 @@
+{
+	"color": {
+		"brand": {
+			"primary": {
+				"value": "#646cff",
+				"comment": "Primary brand color"
+			},
+			"secondary": {
+				"value": "#535bf2",
+				"comment": "Secondary brand color"
+			}
+		},
+		"semantic": {
+			"success": {
+				"value": "#10b981",
+				"comment": "Success state color"
+			},
+			"warning": {
+				"value": "#f59e0b",
+				"comment": "Warning state color"
+			},
+			"error": {
+				"value": "#ef4444",
+				"comment": "Error state color"
+			},
+			"info": {
+				"value": "#3b82f6",
+				"comment": "Info state color"
+			}
+		},
+		"neutral": {
+			"white": {
+				"value": "#ffffff",
+				"comment": "Pure white"
+			},
+			"black": {
+				"value": "#000000",
+				"comment": "Pure black"
+			},
+			"gray": {
+				"50": { "value": "#f9fafb" },
+				"100": { "value": "#f3f4f6" },
+				"200": { "value": "#e5e7eb" },
+				"300": { "value": "#d1d5db" },
+				"400": { "value": "#9ca3af" },
+				"500": { "value": "#6b7280" },
+				"600": { "value": "#4b5563" },
+				"700": { "value": "#374151" },
+				"800": { "value": "#1f2937" },
+				"900": { "value": "#111827" }
+			}
+		}
+	}
+}

@@ -1,0 +1,61 @@
+{
+	"source": [
+		"tokens/color/core.json",
+		"tokens/color/semantic.json",
+		"tokens/size/base.json",
+		"tokens/typography/base.json"
+	],
+	"platforms": {
+		"css": {
+			"transformGroup": "css",
+			"buildPath": "src/styles/generated/",
+			"files": [
+				{
+					"destination": "tokens-base.css",
+					"format": "css/variables",
+					"filter": {
+						"attributes": {
+							"category": "color"
+						}
+					}
+				}
+			]
+		},
+		"cssThemes": {
+			"transformGroup": "css",
+			"buildPath": "src/styles/generated/themes/",
+			"files": [
+				{
+					"destination": "light.css",
+					"format": "css/variables",
+					"filter": "isLightTheme",
+					"options": {
+						"outputReferences": true
+					}
+				},
+				{
+					"destination": "dark.css",
+					"format": "css/variables",
+					"filter": "isDarkTheme",
+					"options": {
+						"outputReferences": true
+					}
+				}
+			]
+		},
+		"js": {
+			"transformGroup": "js",
+			"buildPath": "src/styles/generated/",
+			"files": [
+				{
+					"destination": "tokens.js",
+					"format": "javascript/es6"
+				},
+				{
+					"destination": "tokens.d.ts",
+					"format": "typescript/es6-declarations"
+				}
+			]
+		}
+	}
+}

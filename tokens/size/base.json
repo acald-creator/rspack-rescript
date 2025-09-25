@@ -1,0 +1,57 @@
+{
+	"size": {
+		"font": {
+			"xs": { "value": "0.75rem", "comment": "Extra small font size" },
+			"sm": { "value": "0.875rem", "comment": "Small font size" },
+			"base": { "value": "1rem", "comment": "Base font size" },
+			"lg": { "value": "1.125rem", "comment": "Large font size" },
+			"xl": { "value": "1.25rem", "comment": "Extra large font size" },
+			"2xl": { "value": "1.5rem", "comment": "2x large font size" },
+			"3xl": { "value": "1.875rem", "comment": "3x large font size" },
+			"4xl": { "value": "2.25rem", "comment": "4x large font size" },
+			"5xl": { "value": "3rem", "comment": "5x large font size" }
+		},
+		"spacing": {
+			"0": { "value": "0", "comment": "No spacing" },
+			"px": { "value": "1px", "comment": "1 pixel" },
+			"0.5": { "value": "0.125rem", "comment": "2px spacing" },
+			"1": { "value": "0.25rem", "comment": "4px spacing" },
+			"1.5": { "value": "0.375rem", "comment": "6px spacing" },
+			"2": { "value": "0.5rem", "comment": "8px spacing" },
+			"2.5": { "value": "0.625rem", "comment": "10px spacing" },
+			"3": { "value": "0.75rem", "comment": "12px spacing" },
+			"3.5": { "value": "0.875rem", "comment": "14px spacing" },
+			"4": { "value": "1rem", "comment": "16px spacing" },
+			"5": { "value": "1.25rem", "comment": "20px spacing" },
+			"6": { "value": "1.5rem", "comment": "24px spacing" },
+			"7": { "value": "1.75rem", "comment": "28px spacing" },
+			"8": { "value": "2rem", "comment": "32px spacing" },
+			"9": { "value": "2.25rem", "comment": "36px spacing" },
+			"10": { "value": "2.5rem", "comment": "40px spacing" },
+			"12": { "value": "3rem", "comment": "48px spacing" },
+			"16": { "value": "4rem", "comment": "64px spacing" },
+			"20": { "value": "5rem", "comment": "80px spacing" },
+			"24": { "value": "6rem", "comment": "96px spacing" }
+		},
+		"border": {
+			"radius": {
+				"none": { "value": "0", "comment": "No border radius" },
+				"sm": { "value": "0.125rem", "comment": "Small border radius" },
+				"base": { "value": "0.25rem", "comment": "Base border radius" },
+				"md": { "value": "0.375rem", "comment": "Medium border radius" },
+				"lg": { "value": "0.5rem", "comment": "Large border radius" },
+				"xl": { "value": "0.75rem", "comment": "Extra large border radius" },
+				"2xl": { "value": "1rem", "comment": "2x large border radius" },
+				"3xl": { "value": "1.5rem", "comment": "3x large border radius" },
+				"full": { "value": "9999px", "comment": "Fully rounded" }
+			},
+			"width": {
+				"0": { "value": "0", "comment": "No border" },
+				"1": { "value": "1px", "comment": "1px border" },
+				"2": { "value": "2px", "comment": "2px border" },
+				"4": { "value": "4px", "comment": "4px border" },
+				"8": { "value": "8px", "comment": "8px border" }
+			}
+		}
+	}
+}

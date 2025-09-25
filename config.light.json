@@ -1,0 +1,24 @@
+{
+	"source": [
+		"tokens/color/core.json",
+		"tokens/color/semantic.json",
+		"tokens/size/base.json",
+		"tokens/typography/base.json",
+		"tokens/theme/light.json"
+	],
+	"platforms": {
+		"css": {
+			"transformGroup": "css",
+			"buildPath": "src/styles/generated/themes/",
+			"files": [
+				{
+					"destination": "light.css",
+					"format": "css/variables",
+					"options": {
+						"outputReferences": true
+					}
+				}
+			]
+		}
+	}
+}
