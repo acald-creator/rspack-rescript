@@ -45,6 +45,20 @@ Emotion.Css.injectGlobal(`
 .read-the-docs {
   color: #888;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}
 `)
 
 module Logo = {
@@ -62,14 +76,32 @@ module App = {
       setCount(prev => prev + 1)
     }
 
+    // Example of using Emotion Utils for hover effect
+    let cardStyle = Emotion.Css.cx([
+      "card",
+      Emotion.Css.css({
+        "border": "1px solid #646cff",
+        "border-radius": "8px",
+        "transition": "border-color 0.3s ease",
+      }),
+      Emotion.Utils.hover({"border-color": "#535bf2"})
+    ])
+
+    let titleStyle = Emotion.Css.css({
+      "color": "#646cff",
+      "margin-bottom": "1rem",
+    })
+
     <Container>
       <div>
         <a href="https://reactjs.org" target="_blank">
           <Logo className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1> {React.string("Rspack + Rescript & React + TypeScript on Bun")} </h1>
-      <div className="card">
+      <h1 className={titleStyle}>
+        {React.string("Rspack + Rescript & React + TypeScript on Bun")}
+      </h1>
+      <div className={cardStyle}>
         <Button onClick> {React.string("count is " ++ string_of_int(count))} </Button>
         <p>
           {React.string("Example Input field below")}
