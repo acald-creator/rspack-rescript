@@ -8,6 +8,10 @@
     "res:build": "rescript",
     "res:dev": "rescript build -w",
     "res:clean": "rescript clean -with-deps",
+    "tokens:build": "style-dictionary build",
+    "tokens:build:light": "style-dictionary build --config config.light.json",
+    "tokens:build:dark": "style-dictionary build --config config.dark.json",
+    "tokens:watch": "style-dictionary build --watch",
     "prepare": "husky install",
     "commit": "git-cz",
     "format:check": "biome check .",
@@ -40,6 +44,7 @@
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
     "inquirer": "^9.2.11",
+    "style-dictionary": "^5.0.4",
     "typescript": "^5.0.4",
     "webpack-bundle-analyzer": "^4.9.1"
   },

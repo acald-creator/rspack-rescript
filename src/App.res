@@ -2,8 +2,16 @@
 open Emotion.Css
 open Emotion.Utils
 
+// Import component library
+module Components = {
+  module Button = Button.Button
+  module Input = Input.Input
+  module Card = Card.Card
+  module Typography = Typography.Typography
+}
+
 // Initialize global styles
-let _ = Styles.GlobalStyles.initialize()
+let _ = GlobalStyles.initialize()
 
 Emotion.Css.injectGlobal(`
 #root {
