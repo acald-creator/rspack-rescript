@@ -11,14 +11,13 @@ module.exports = {
 	plugins: [
 		// new BundleAnalyzerPlugin(),
 		new rspack.HtmlRspackPlugin({ template: "./index.html" }),
-		new rspack.DefinePlugin({ "process.env.NODE_ENV": "'development'" }),
+		new rspack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify(
+				isProduction ? "production" : "development",
+			),
+		}),
 		!isProduction && new ReactRefreshPlugin(),
 	].filter(Boolean),
-	experiments: {
-		rspackFuture: {
-			disableTransformByDefault: true,
-		},
-	},
 	mode: isProduction ? "production" : "development",
 	context: __dirname,
 	entry: {
