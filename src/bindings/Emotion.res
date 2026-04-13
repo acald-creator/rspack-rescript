@@ -247,11 +247,11 @@ module Utils = {
 
     let getFocusShadow = (color) => {
       switch color {
-      | "primary" => "0 0 0 3px rgba(100, 108, 255, 0.1)"
-      | "success" => "0 0 0 3px rgba(34, 197, 94, 0.1)"
-      | "warning" => "0 0 0 3px rgba(245, 158, 11, 0.1)"
-      | "error" => "0 0 0 3px rgba(239, 68, 68, 0.1)"
-      | _ => "0 0 0 3px rgba(100, 108, 255, 0.1)"
+      | "primary" => "0 0 0 3px rgba(200, 164, 92, 0.25)"
+      | "success" => "0 0 0 3px rgba(34, 197, 94, 0.25)"
+      | "warning" => "0 0 0 3px rgba(245, 158, 11, 0.25)"
+      | "error" => "0 0 0 3px rgba(239, 68, 68, 0.25)"
+      | _ => "0 0 0 3px rgba(200, 164, 92, 0.25)"
       }
     }
 

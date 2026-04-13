@@ -25,7 +25,7 @@ Emotion.Css.injectGlobal(`
   will-change: filter;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #c8a45caa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -48,7 +48,7 @@ Emotion.Css.injectGlobal(`
 
 /* Hero section gradients */
 .hero-gradient {
-  background: linear-gradient(135deg, #646cff 0%, #535bf2 50%, #4338ca 100%);
+  background: linear-gradient(135deg, #c8a45c 0%, #c47d4a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -87,7 +87,7 @@ module HeroSection = {
       "justifyContent": "center",
       "textAlign": "center",
       "padding": "2rem 1rem",
-      "background": "linear-gradient(135deg, rgba(100, 108, 255, 0.1) 0%, rgba(83, 91, 242, 0.1) 100%)"
+      "background": "linear-gradient(180deg, rgba(200, 164, 92, 0.04) 0%, transparent 100%)"
     })
 
     let logoContainerStyles = css({
@@ -108,7 +108,7 @@ module HeroSection = {
         {React.string("Modern React Development")}
       </Components.Typography.Display>
 
-      <Components.Typography.Heading level=#h2 size=#xl className={css({"color": "rgba(255, 255, 255, 0.6)", "marginTop": "1rem", "maxWidth": "600px"})}>
+      <Components.Typography.Heading level=#h2 size=#xl className={css({"color": "#9a9084", "marginTop": "1rem", "maxWidth": "600px"})}>
         {React.string("Built with Rspack, ReScript, React, and Bun for lightning-fast development")}
       </Components.Typography.Heading>
 
@@ -181,8 +181,8 @@ module ComponentsSection = {
 
     let sectionStyles = css({
       "padding": "4rem 1rem",
-      "backgroundColor": "rgba(45, 45, 45, 0.3)",
-      "borderTop": "1px solid #374151"
+      "backgroundColor": "rgba(36, 33, 32, 0.5)",
+      "borderTop": "1px solid #33302c"
     })
 
     let containerStyles = css({
@@ -203,7 +203,7 @@ module ComponentsSection = {
           {React.string("Component Library")}
         </Components.Typography.Display>
 
-        <Components.Typography.Body size=#lg align=#center className={css({"marginTop": "1rem", "color": "rgba(255, 255, 255, 0.6)"})}>
+        <Components.Typography.Body size=#lg align=#center className={css({"marginTop": "1rem", "color": "#9a9084"})}>
           {React.string("Explore our comprehensive component library with variants, sizes, and states")}
         </Components.Typography.Body>
 
@@ -308,9 +308,9 @@ module App = {
       <FeaturesSection />
       <ComponentsSection />
 
-      <footer className={css({"padding": "2rem", "textAlign": "center", "borderTop": "1px solid #374151", "marginTop": "2rem"})}>
+      <footer className={css({"padding": "2rem", "textAlign": "center", "borderTop": "1px solid #33302c", "marginTop": "2rem"})}>
         <Components.Typography.Caption>
-          {React.string("Built with ❤️ using Rspack + ReScript + React + Bun")}
+          {React.string("Built with Rspack + ReScript + React + Bun")}
         </Components.Typography.Caption>
       </footer>
     </div>

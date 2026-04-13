@@ -21,8 +21,8 @@ let injectGlobalStyles = () => {
       font-size: 1rem;
       font-weight: 400;
       line-height: 1.5;
-      color: rgba(255, 255, 255, 0.87);
-      background-color: #242424;
+      color: #ece4d8;
+      background-color: #1a1816;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -30,7 +30,7 @@ let injectGlobalStyles = () => {
 
     /* Typography Elements */
     h1, h2, h3, h4, h5, h6 {
-      color: rgba(255, 255, 255, 0.87);
+      color: #ece4d8;
       font-weight: 600;
       line-height: 1.25;
       margin-bottom: 1rem;
@@ -45,24 +45,24 @@ let injectGlobalStyles = () => {
 
     p {
       margin-bottom: 1rem;
-      color: rgba(255, 255, 255, 0.87);
+      color: #ece4d8;
     }
 
     /* Link Styles */
     a {
-      color: #646cff;
+      color: #c8a45c;
       text-decoration: none;
       font-weight: 500;
       transition: color 200ms ease-out;
     }
 
     a:hover {
-      color: #818cf8;
+      color: #dfc088;
       text-decoration: underline;
     }
 
     a:focus {
-      outline: 2px solid #646cff;
+      outline: 2px solid #c8a45c;
       outline-offset: 2px;
       border-radius: 0.125rem;
     }
@@ -71,18 +71,18 @@ let injectGlobalStyles = () => {
     code {
       font-family: 'Fira Code', Monaco, 'Cascadia Code', monospace;
       font-size: 0.875em;
-      background-color: #2d2d2d;
+      background-color: #242120;
       padding: 0.25rem 0.5rem;
       border-radius: 0.125rem;
-      border: 1px solid #374151;
+      border: 1px solid #33302c;
     }
 
     pre {
       font-family: 'Fira Code', Monaco, 'Cascadia Code', monospace;
-      background-color: #2d2d2d;
+      background-color: #242120;
       padding: 1rem;
       border-radius: 0.375rem;
-      border: 1px solid #374151;
+      border: 1px solid #33302c;
       overflow-x: auto;
       margin-bottom: 1rem;
     }
@@ -107,22 +107,22 @@ let injectGlobalStyles = () => {
     }
 
     input, textarea, select {
-      background-color: #1a1a1a;
-      border: 1px solid #374151;
+      background-color: #141210;
+      border: 1px solid #33302c;
       border-radius: 0.375rem;
       padding: 0.5rem 0.75rem;
-      color: rgba(255, 255, 255, 0.87);
+      color: #ece4d8;
       transition: all 200ms ease-out;
     }
 
     input:focus, textarea:focus, select:focus {
       outline: none;
-      border-color: #646cff;
-      box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+      border-color: #c8a45c;
+      box-shadow: 0 0 0 3px rgba(200, 164, 92, 0.25);
     }
 
     input::placeholder, textarea::placeholder {
-      color: rgba(255, 255, 255, 0.6);
+      color: #5c564e;
     }
 
     /* Utility Classes */
@@ -136,42 +136,6 @@ let injectGlobalStyles = () => {
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border: 0;
-    }
-
-    /* Light theme overrides */
-    @media (prefers-color-scheme: light) {
-      body {
-        color: #213547;
-        background-color: #ffffff;
-      }
-
-      h1, h2, h3, h4, h5, h6, p {
-        color: #213547;
-      }
-
-      a:hover {
-        color: #4338ca;
-      }
-
-      code {
-        background-color: #f3f4f6;
-        border-color: #e5e7eb;
-      }
-
-      pre {
-        background-color: #f9fafb;
-        border-color: #e5e7eb;
-      }
-
-      input, textarea, select {
-        background-color: #ffffff;
-        border-color: #d1d5db;
-        color: #213547;
-      }
-
-      input::placeholder, textarea::placeholder {
-        color: #6b7280;
-      }
     }
 
     /* Reduced Motion */
