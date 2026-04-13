@@ -4,6 +4,7 @@ open Emotion.Utils
 module NavBar = {
   @react.component
   let make = () => {
+    let auth = AuthContext.useAuth()
     let url = RescriptReactRouter.useUrl()
     let currentPath = switch url.path {
     | list{} => "/"
@@ -76,12 +77,22 @@ module NavBar = {
           onClick={evt => handleNav("/posts", evt)}>
           {React.string("Posts")}
         </a>
-        <a
-          className={linkStyles(~active=currentPath == "/login")}
-          href="/login"
-          onClick={evt => handleNav("/login", evt)}>
-          {React.string("Sign In")}
-        </a>
+        {switch auth.state {
+        | AuthContext.LoggedIn(user) =>
+          <a
+            className={linkStyles(~active=currentPath == "/login")}
+            href="/login"
+            onClick={evt => handleNav("/login", evt)}>
+            {React.string(user.name)}
+          </a>
+        | AuthContext.LoggedOut =>
+          <a
+            className={linkStyles(~active=currentPath == "/login")}
+            href="/login"
+            onClick={evt => handleNav("/login", evt)}>
+            {React.string("Sign In")}
+          </a>
+        }}
       </div>
     </nav>
   }

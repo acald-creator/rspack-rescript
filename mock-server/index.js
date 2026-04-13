@@ -87,8 +87,81 @@ const yoga = createYoga({
 	},
 });
 
-const server = createServer(yoga);
+// Store pending auth codes for the mock OAuth flow
+const pendingCodes = new Map();
+
+const server = createServer((req, res) => {
+	const url = new URL(req.url, `http://${req.headers.host}`);
+
+	// Mock OAuth authorize endpoint
+	if (url.pathname === "/oauth/authorize") {
+		const redirectUri = url.searchParams.get("redirect_uri");
+		const state = url.searchParams.get("state");
+		const code = `mock-code-${Date.now()}`;
+
+		// Store the code verifier expectation
+		pendingCodes.set(code, {
+			codeChallenge: url.searchParams.get("code_challenge"),
+			clientId: url.searchParams.get("client_id"),
+		});
+
+		// Redirect back with code and state (simulates user approving)
+		const callbackUrl = `${redirectUri}?code=${code}&state=${state}`;
+		res.writeHead(302, { Location: callbackUrl });
+		res.end();
+		return;
+	}
+
+	// Mock OAuth token endpoint
+	if (url.pathname === "/oauth/token" && req.method === "POST") {
+		let body = "";
+		req.on("data", (chunk) => {
+			body += chunk;
+		});
+		req.on("end", () => {
+			const params = new URLSearchParams(body);
+			const code = params.get("code");
+
+			if (code && pendingCodes.has(code)) {
+				pendingCodes.delete(code);
+				res.writeHead(200, {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "http://localhost:8080",
+				});
+				res.end(
+					JSON.stringify({
+						access_token: `mock-token-${Date.now()}`,
+						token_type: "Bearer",
+						expires_in: 3600,
+					}),
+				);
+			} else {
+				res.writeHead(400, {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "http://localhost:8080",
+				});
+				res.end(JSON.stringify({ error: "invalid_grant" }));
+			}
+		});
+		return;
+	}
+
+	// CORS preflight for token endpoint
+	if (url.pathname === "/oauth/token" && req.method === "OPTIONS") {
+		res.writeHead(204, {
+			"Access-Control-Allow-Origin": "http://localhost:8080",
+			"Access-Control-Allow-Methods": "POST, OPTIONS",
+			"Access-Control-Allow-Headers": "Content-Type",
+		});
+		res.end();
+		return;
+	}
+
+	// Pass everything else to GraphQL yoga
+	yoga(req, res);
+});
 
 server.listen(4000, () => {
 	console.log("GraphQL server running at http://localhost:4000/graphql");
+	console.log("OAuth endpoints at http://localhost:4000/oauth/authorize and /oauth/token");
 });

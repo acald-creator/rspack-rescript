@@ -36,8 +36,12 @@ let make = () => {
   switch url.path {
   | list{} => <HomePage />
   | list{"components"} => <ComponentsPage />
-  | list{"posts"} => <PostsPage />
+  | list{"posts"} =>
+    <ProtectedRoute.ProtectedRoute>
+      <PostsPage />
+    </ProtectedRoute.ProtectedRoute>
   | list{"login"} => <LoginPage />
+  | list{"callback"} => <CallbackPage />
   | _ => <NotFound />
   }
 }
