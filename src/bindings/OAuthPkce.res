@@ -1,107 +1,64 @@
-// OAuth 2.0 PKCE implementation
-// Mirrors the API pattern of @cosmonexus/oauth-client for future swap-in
+// ReScript bindings for @cosmonexus/oauth-client
 
-type config = {
+type oauthClientConfig = {
+  issuerBaseUrl: string,
   clientId: string,
-  redirectUri: string,
-  authorizeUrl: string,
-  tokenUrl: string,
-  scopes: array<string>,
+  redirectUri?: string,
+  scopes?: array<string>,
+  storagePrefix?: string,
 }
 
-type tokenSet = {
-  accessToken: string,
-  tokenType: string,
-  expiresIn: int,
+type authorizeOptions = {
+  provider: string,
+  flow?: [#login | #signup | #verify],
 }
 
-@val external encodeURIComponent: string => string = "encodeURIComponent"
+type urlObj
+@send external toString: urlObj => string = "toString"
 
-let generateRandomString: int => string = %raw(`
-  function(length) {
-    var array = new Uint8Array(length);
-    crypto.getRandomValues(array);
-    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
-    var result = "";
-    for (var i = 0; i < length; i++) {
-      result += chars[array[i] % chars.length];
-    }
-    return result;
-  }
-`)
-
-let generateCodeChallenge: string => promise<string> = %raw(`
-  async function(verifier) {
-    var encoder = new TextEncoder();
-    var data = encoder.encode(verifier);
-    var hash = await crypto.subtle.digest("SHA-256", data);
-    var bytes = new Uint8Array(hash);
-    var str = "";
-    for (var i = 0; i < bytes.length; i++) {
-      str += String.fromCharCode(bytes[i]);
-    }
-    return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-  }
-`)
-
-let startAuth = async (config: config) => {
-  let codeVerifier = generateRandomString(64)
-  let codeChallenge = await generateCodeChallenge(codeVerifier)
-  let state = generateRandomString(32)
-
-  ignore(%raw(`sessionStorage.setItem("pkce_code_verifier", codeVerifier)`))
-  ignore(%raw(`sessionStorage.setItem("pkce_state", state)`))
-
-  let params = [
-    ("client_id", config.clientId),
-    ("redirect_uri", config.redirectUri),
-    ("response_type", "code"),
-    ("code_challenge", codeChallenge),
-    ("code_challenge_method", "S256"),
-    ("state", state),
-    ("scope", config.scopes->Array.join(" ")),
-  ]
-
-  let queryString =
-    params->Array.map(((k, v)) => `${k}=${encodeURIComponent(v)}`)->Array.join("&")
-
-  `${config.authorizeUrl}?${queryString}`
+type authorizeResult = {
+  url: urlObj,
+  codeVerifier: string,
+  state: string,
 }
 
-@val external fetchRaw: (string, {..}) => promise<{..}> = "fetch"
-
-let exchangeCode = async (config: config, code: string) => {
-  let codeVerifier: string = %raw(`sessionStorage.getItem("pkce_code_verifier") || ""`)
-
-  let body =
-    [
-      ("grant_type", "authorization_code"),
-      ("client_id", config.clientId),
-      ("code", code),
-      ("redirect_uri", config.redirectUri),
-      ("code_verifier", codeVerifier),
-    ]
-    ->Array.map(((k, v)) => `${k}=${encodeURIComponent(v)}`)
-    ->Array.join("&")
-
-  let response = await fetchRaw(
-    config.tokenUrl,
-    {
-      "method": "POST",
-      "headers": {
-        "content-type": "application/x-www-form-urlencoded",
-      },
-      "body": body,
-    },
-  )
-  let json = await response["json"]()
-
-  ignore(%raw(`sessionStorage.removeItem("pkce_code_verifier")`))
-  ignore(%raw(`sessionStorage.removeItem("pkce_state")`))
-
-  {
-    accessToken: json["access_token"],
-    tokenType: json["token_type"],
-    expiresIn: json["expires_in"],
-  }
+type callbackResult = {
+  code: string,
+  state: string,
+  codeVerifier: string,
 }
+
+type tokenExchangePayload = {
+  grant_type: string,
+  code: string,
+  code_verifier: string,
+  redirect_uri: string,
+  client_id: string,
+}
+
+type oauthClient
+
+@new @module("@cosmonexus/oauth-client")
+external makeClient: oauthClientConfig => oauthClient = "OAuthClient"
+
+@send
+external authorize: (oauthClient, authorizeOptions) => promise<authorizeResult> = "authorize"
+
+@send
+external login: (oauthClient, authorizeOptions) => promise<unit> = "login"
+
+@send
+external handleCallback: (oauthClient, string) => callbackResult = "handleCallback"
+
+@send
+external buildTokenPayload: (oauthClient, callbackResult) => tokenExchangePayload =
+  "buildTokenPayload"
+
+@send
+external getTokenEndpoint: oauthClient => string = "getTokenEndpoint"
+
+@send
+external logout: oauthClient => unit = "logout"
+
+@send
+external clearState: oauthClient => unit = "clearState"

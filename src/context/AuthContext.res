@@ -1,3 +1,23 @@
+// Auth configuration for the template
+// Points to the mock server in development
+let oauthConfig: OAuthPkce.oauthClientConfig = {
+  issuerBaseUrl: "http://localhost:4000/oauth",
+  clientId: "rspack-rescript-template",
+  redirectUri: "http://localhost:8080/callback",
+  scopes: ["openid", "profile", "email"],
+}
+
+// Re-export the provider and hook from @cosmonexus/oauth-react
+module Provider = {
+  @react.component
+  let make = (~children) => {
+    <OAuthReact.AuthProvider config={oauthConfig}>
+      {children}
+    </OAuthReact.AuthProvider>
+  }
+}
+
+// Simplified auth hook for the template
 type user = {
   id: string,
   name: string,
@@ -8,53 +28,44 @@ type authState =
   | LoggedOut
   | LoggedIn(user)
 
-type authContext = {
+type authActions = {
   state: authState,
   login: unit => promise<unit>,
   logout: unit => unit,
   handleCallback: string => promise<unit>,
 }
 
-let oauthConfig: OAuthPkce.config = {
-  clientId: "rspack-rescript-template",
-  redirectUri: "http://localhost:8080/callback",
-  authorizeUrl: "http://localhost:4000/oauth/authorize",
-  tokenUrl: "http://localhost:4000/oauth/token",
-  scopes: ["openid", "profile", "email"],
-}
-
-let context = React.createContext({
+// Internal state context for tracking logged-in user
+// The OAuth library handles tokens; this tracks the user display state
+let userContext = React.createContext({
   state: LoggedOut,
   login: async () => (),
   logout: () => (),
   handleCallback: async (_) => (),
 })
 
-module ContextProvider = {
-  let make = React.Context.provider(context)
+module UserContextProvider = {
+  let make = React.Context.provider(userContext)
 }
 
-module Provider = {
+module UserProvider = {
   @react.component
   let make = (~children) => {
     let (state, setState) = React.useState(() => LoggedOut)
-
-    let setWindowLocation: string => unit = %raw(`function(url) { window.location.href = url }`)
+    let cosmoAuth = OAuthReact.useAuth()
 
     let login = async () => {
-      let url = await OAuthPkce.startAuth(oauthConfig)
-      setWindowLocation(url)
+      await cosmoAuth.login({provider: "mock"})
     }
 
     let logout = () => {
+      cosmoAuth.logout()
       setState(_ => LoggedOut)
     }
 
-    let handleCallback = async (code: string) => {
-      let tokenSet = await OAuthPkce.exchangeCode(oauthConfig, code)
-      // For the template demo, create a user from the token
-      // In production, you'd decode the JWT or call a /userinfo endpoint
-      ignore(tokenSet)
+    let handleCallback = async (search: string) => {
+      let _tokenSet = await cosmoAuth.handleTokenCallback(search)
+      // In production, decode the JWT or call /userinfo
       setState(_ => LoggedIn({
         id: "user-1",
         name: "Alice Chen",
@@ -69,8 +80,8 @@ module Provider = {
       handleCallback,
     }
 
-    <ContextProvider value> {children} </ContextProvider>
+    <UserContextProvider value> {children} </UserContextProvider>
   }
 }
 
-let useAuth = () => React.useContext(context)
+let useAuth = () => React.useContext(userContext)

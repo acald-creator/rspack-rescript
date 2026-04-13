@@ -22,7 +22,7 @@ const users = [
 	},
 ];
 
-let posts = [
+const posts = [
 	{
 		id: "post-1",
 		title: "Getting Started with ReScript",
@@ -163,5 +163,7 @@ const server = createServer((req, res) => {
 
 server.listen(4000, () => {
 	console.log("GraphQL server running at http://localhost:4000/graphql");
-	console.log("OAuth endpoints at http://localhost:4000/oauth/authorize and /oauth/token");
+	console.log(
+		"OAuth endpoints at http://localhost:4000/oauth/authorize and /oauth/token",
+	);
 });

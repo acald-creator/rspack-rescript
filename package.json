@@ -1,68 +1,72 @@
 {
-  "name": "rspack-rescript-react",
-  "private": true,
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "concurrently \"bun run res:dev\" \"rspack serve\" \"bun run dev:server\"",
-    "dev:server": "node mock-server/index.js",
-    "build": "cross-env NODE_ENV=production rspack build",
-    "relay": "rescript-relay-compiler",
-    "relay:watch": "rescript-relay-compiler --watch",
-    "res:build": "rescript build",
-    "res:dev": "rescript watch",
-    "res:clean": "rescript clean",
-    "prepare": "husky",
-    "commit": "git-cz",
-    "format:check": "biome check .",
-    "format:write": "biome format . --write",
-    "lint:check": "biome lint .",
-    "lint": "biome lint --write .",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "dependencies": {
-    "@emotion/css": "^11.13.5",
-    "@emotion/server": "^11.11.0",
-    "@rescript/core": "1.6.1",
-    "@rescript/react": "0.14.2",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "react-relay": "20.1.1",
-    "relay-runtime": "20.1.1",
-    "rescript": "12.2.0",
-    "rescript-relay": "4.4.1"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.4.11",
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
-    "@commitlint/cz-commitlint": "^20.5.1",
-    "@rspack/cli": "1.7.11",
-    "@rspack/core": "^1.7.11",
-    "@rspack/plugin-react-refresh": "1.6.2",
-    "@svgr/webpack": "^8.1.0",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "commitizen": "^4.3.1",
-    "concurrently": "^9.2.1",
-    "cross-env": "^10.1.0",
-    "graphql": "16.11.0",
-    "graphql-yoga": "5.12.0",
-    "husky": "^9.1.7",
-    "inquirer": "^13.4.1",
-    "jsdom": "^29.0.2",
-    "typescript": "^6.0.2",
-    "vitest": "^4.1.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
-  "trustedDependencies": [
-    "rescript-relay"
-  ]
+	"name": "rspack-rescript-react",
+	"private": true,
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "concurrently \"bun run res:dev\" \"rspack serve\" \"bun run dev:server\"",
+		"dev:server": "node mock-server/index.js",
+		"build": "cross-env NODE_ENV=production rspack build",
+		"relay": "rescript-relay-compiler",
+		"relay:watch": "rescript-relay-compiler --watch",
+		"res:build": "rescript build",
+		"res:dev": "rescript watch",
+		"res:clean": "rescript clean",
+		"prepare": "husky",
+		"commit": "git-cz",
+		"format:check": "biome check .",
+		"format:write": "biome format . --write",
+		"lint:check": "biome lint .",
+		"lint": "biome lint --write .",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"@cosmonexus/oauth-client": "^1.0.0",
+		"@cosmonexus/oauth-core": "1.0.0",
+		"@cosmonexus/oauth-react": "^1.0.0",
+		"@cosmonexus/oauth-tokens": "^1.0.0",
+		"@emotion/css": "^11.13.5",
+		"@emotion/server": "^11.11.0",
+		"@rescript/core": "1.6.1",
+		"@rescript/react": "0.14.2",
+		"react": "^19.2.5",
+		"react-dom": "^19.2.5",
+		"react-relay": "20.1.1",
+		"relay-runtime": "20.1.1",
+		"rescript": "12.2.0",
+		"rescript-relay": "4.4.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.11",
+		"@commitlint/cli": "^20.5.0",
+		"@commitlint/config-conventional": "^20.5.0",
+		"@commitlint/cz-commitlint": "^20.5.1",
+		"@rspack/cli": "1.7.11",
+		"@rspack/core": "^1.7.11",
+		"@rspack/plugin-react-refresh": "1.6.2",
+		"@svgr/webpack": "^8.1.0",
+		"@testing-library/dom": "^10.4.1",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.2",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"commitizen": "^4.3.1",
+		"concurrently": "^9.2.1",
+		"cross-env": "^10.1.0",
+		"graphql": "16.11.0",
+		"graphql-yoga": "5.12.0",
+		"husky": "^9.1.7",
+		"inquirer": "^13.4.1",
+		"jsdom": "^29.0.2",
+		"typescript": "^6.0.2",
+		"vitest": "^4.1.4"
+	},
+	"config": {
+		"commitizen": {
+			"path": "@commitlint/cz-commitlint"
+		}
+	},
+	"trustedDependencies": [
+		"rescript-relay"
+	]
 }

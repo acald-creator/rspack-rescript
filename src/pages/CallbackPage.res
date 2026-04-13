@@ -2,23 +2,23 @@ open Emotion.Css
 
 module Typography = Typography.Typography
 
+@val external locationSearch: string = "window.location.search"
+
 @react.component
 let make = () => {
   let auth = AuthContext.useAuth()
 
   React.useEffect0(() => {
-    let url = %raw(`new URL(window.location.href)`)
-    let code: option<string> = url["searchParams"]["get"]("code")->Nullable.toOption
-
-    switch code {
-    | Some(c) =>
-      auth.handleCallback(c)
+    let search = locationSearch
+    if String.length(search) > 0 {
+      auth.handleCallback(search)
       ->Promise.then(_ => {
         RescriptReactRouter.push("/login")
         Promise.resolve()
       })
       ->ignore
-    | None => RescriptReactRouter.push("/login")
+    } else {
+      RescriptReactRouter.push("/login")
     }
 
     None
