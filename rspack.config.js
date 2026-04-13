@@ -12,6 +12,9 @@ module.exports = {
 			"process.env.NODE_ENV": JSON.stringify(
 				isProduction ? "production" : "development",
 			),
+			"process.env.GRAPHQL_ENDPOINT": JSON.stringify(
+				process.env.GRAPHQL_ENDPOINT || "http://localhost:4000/graphql",
+			),
 		}),
 		!isProduction && new ReactRefreshPlugin(),
 	].filter(Boolean),

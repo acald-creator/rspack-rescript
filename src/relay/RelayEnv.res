@@ -1,4 +1,5 @@
 @val external fetch: (string, {..}) => promise<{..}> = "fetch"
+@val external graphqlEndpoint: string = "process.env.GRAPHQL_ENDPOINT"
 
 let fetchQuery: RescriptRelay.Network.fetchFunctionPromise = async (
   operation,
@@ -12,7 +13,7 @@ let fetchQuery: RescriptRelay.Network.fetchFunctionPromise = async (
   })->Option.getOr("{}")
 
   let response = await fetch(
-    "http://localhost:4000/graphql",
+    graphqlEndpoint,
     {
       "method": "POST",
       "headers": {

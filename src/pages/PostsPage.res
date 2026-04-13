@@ -64,6 +64,39 @@ module PostsList = {
   }
 }
 
+module ServerUnavailable = {
+  module Typography = Typography.Typography
+  module Card = Card.Card
+
+  @react.component
+  let make = () => {
+    <Card variant=#outlined>
+      <Card.Body>
+        <Typography.Heading level=#h3>
+          {React.string("GraphQL Server Not Running")}
+        </Typography.Heading>
+        <Typography.Body className={css({"color": Color.textSecondary})}>
+          {React.string(
+            "The Posts page requires the mock GraphQL server. Start it locally with:",
+          )}
+        </Typography.Body>
+        <code
+          className={css({
+            "display": "block",
+            "padding": "0.75rem 1rem",
+            "marginTop": "0.75rem",
+            "backgroundColor": Color.bgElevated,
+            "borderRadius": "0.375rem",
+            "fontSize": "0.875rem",
+            "color": Color.primary,
+          })}>
+          {React.string("bun run dev:server")}
+        </code>
+      </Card.Body>
+    </Card>
+  }
+}
+
 module Typography = Typography.Typography
 
 @react.component
@@ -80,8 +113,11 @@ let make = () => {
       className={css({"marginTop": "0.5rem", "marginBottom": "2rem", "color": Color.textSecondary})}>
       {React.string("Data fetched from the mock GraphQL server via Relay.")}
     </Typography.Body>
-    <React.Suspense fallback={<Typography.Body> {React.string("Loading posts...")} </Typography.Body>}>
-      <PostsList />
-    </React.Suspense>
+    <RescriptReactErrorBoundary fallback={_ => <ServerUnavailable />}>
+      <React.Suspense
+        fallback={<Typography.Body> {React.string("Loading posts...")} </Typography.Body>}>
+        <PostsList />
+      </React.Suspense>
+    </RescriptReactErrorBoundary>
   </div>
 }
