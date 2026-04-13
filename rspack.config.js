@@ -20,6 +20,9 @@ module.exports = {
 	entry: {
 		main: "./src/main.bs.js",
 	},
+	devServer: {
+		historyApiFallback: true,
+	},
 	devtool: "source-map",
 	module: {
 		rules: [
