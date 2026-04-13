@@ -63,7 +63,7 @@ module Button = {
     | #primary => cx([
         css({
           "backgroundColor": Color.primary,
-          "color": "white"
+          "color": Color.textInverse
         }),
         hover({"backgroundColor": Color.primaryDark}),
         focus({"boxShadow": Shadow.getFocusShadow("primary")}),
@@ -74,10 +74,10 @@ module Button = {
       ])
     | #secondary => cx([
         css({
-          "backgroundColor": "#33302c",
-          "color": "#ece4d8"
+          "backgroundColor": Color.border,
+          "color": Color.textPrimary
         }),
-        hover({"backgroundColor": "#3d3935"}),
+        hover({"backgroundColor": Color.borderHover}),
         focus({"boxShadow": Shadow.getFocusShadow("primary")})
       ])
     | #outline => cx([
@@ -88,7 +88,7 @@ module Button = {
         }),
         hover({
           "backgroundColor": Color.primary,
-          "color": "white"
+          "color": Color.textInverse
         }),
         focus({"boxShadow": Shadow.getFocusShadow("primary")})
       ])
@@ -97,7 +97,7 @@ module Button = {
           "backgroundColor": "transparent",
           "color": Color.primary
         }),
-        hover({"backgroundColor": "rgba(200, 164, 92, 0.08)"}),
+        hover({"backgroundColor": `${Color.primary}14`}),
         focus({"boxShadow": Shadow.getFocusShadow("primary")})
       ])
     | #danger => cx([
@@ -105,7 +105,7 @@ module Button = {
           "backgroundColor": Color.error,
           "color": "white"
         }),
-        hover({"backgroundColor": "#b91c1c"}),
+        hover({"backgroundColor": Color.errorDark}),
         focus({"boxShadow": Shadow.getFocusShadow("error")})
       ])
     }

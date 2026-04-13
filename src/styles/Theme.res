@@ -71,6 +71,14 @@ module Theme = {
       "overlay": "rgba(0, 0, 0, 0.5)",
       "inverse": "#f5f0e8",
     }
+
+    // UI element colors
+    let border = {
+      "default": "#33302c",
+      "hover": "#3d3935",
+    }
+
+    let placeholder = "#7a7268"
   }
 
   // Typography System

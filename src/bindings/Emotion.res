@@ -50,19 +50,30 @@ module Utils = {
     let primaryLight = Theme.Colors.brand["primary-light"]
     let primaryDark = Theme.Colors.brand["primary-dark"]
     let secondary = Theme.Colors.brand["secondary"]
+    let secondaryLight = Theme.Colors.brand["secondary-light"]
+    let secondaryDark = Theme.Colors.brand["secondary-dark"]
 
     let success = Theme.Colors.semantic["success"]
+    let successDark = Theme.Colors.semantic["success-dark"]
     let warning = Theme.Colors.semantic["warning"]
     let error = Theme.Colors.semantic["error"]
+    let errorDark = Theme.Colors.semantic["error-dark"]
     let info = Theme.Colors.semantic["info"]
 
     let textPrimary = Theme.Colors.text["primary"]
     let textSecondary = Theme.Colors.text["secondary"]
     let textDisabled = Theme.Colors.text["disabled"]
+    let textInverse = Theme.Colors.text["inverse"]
 
     let bgPrimary = Theme.Colors.background["primary"]
     let bgSecondary = Theme.Colors.background["secondary"]
     let bgElevated = Theme.Colors.background["elevated"]
+    let bgOverlay = Theme.Colors.background["overlay"]
+
+    let border = Theme.Colors.border["default"]
+    let borderHover = Theme.Colors.border["hover"]
+
+    let placeholder = Theme.Colors.placeholder
   }
 
   // Typography utilities
@@ -226,7 +237,7 @@ module Utils = {
     }
 
     let rounded = (~size="base", ()) => css({"borderRadius": getRadius(size)})
-    let border = (~width="1", ~color="#e5e7eb", ()) =>
+    let border = (~width="1", ~color=Theme.Colors.border["default"], ()) =>
       css({"border": `${getBorderWidth(width)} solid ${color}`})
   }
 

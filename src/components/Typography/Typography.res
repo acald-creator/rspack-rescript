@@ -13,7 +13,7 @@ module Typography = {
     "margin": "0",
     "fontFamily": "Inter, Avenir, Helvetica, Arial, sans-serif",
     "lineHeight": "1.5",
-    "color": "#ece4d8"
+    "color": Theme.Theme.Colors.text["primary"]
   })
 
   // Variant styles
@@ -40,7 +40,7 @@ module Typography = {
         "fontSize": "0.875rem",
         "fontWeight": "400",
         "lineHeight": "1.25",
-        "color": "#9a9084"
+        "color": Theme.Theme.Colors.text["secondary"]
       })
     | #overline => css({
         "fontSize": "0.75rem",
@@ -48,7 +48,7 @@ module Typography = {
         "lineHeight": "1.25",
         "letterSpacing": "0.1em",
         "textTransform": "uppercase",
-        "color": "#9a9084"
+        "color": Theme.Theme.Colors.text["secondary"]
       })
     }
   }
