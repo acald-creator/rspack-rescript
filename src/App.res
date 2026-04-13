@@ -1,6 +1,5 @@
 // Import design system and components
 open Emotion.Css
-open Emotion.Utils
 
 // Import component library
 module Components = {
@@ -117,7 +116,7 @@ module HeroSection = {
           variant=#primary
           size=#lg
           onClick={_evt => setCount(prev => prev + 1)}>
-          {React.string("Interactive Demo (" ++ string_of_int(count) ++ ")")}
+          {React.string("Interactive Demo (" ++ Int.toString(count) ++ ")")}
         </Components.Button>
         <Components.Button variant=#outline size=#lg>
           {React.string("View Components")}
@@ -177,7 +176,7 @@ module ComponentsSection = {
   @react.component
   let make = () => {
     let (inputValue, setInputValue) = React.useState(() => "")
-    let (selectedCard, setSelectedCard) = React.useState(() => None)
+    let (_selectedCard, _setSelectedCard) = React.useState(() => None)
 
     let sectionStyles = css({
       "padding": "4rem 1rem",

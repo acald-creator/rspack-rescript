@@ -1,6 +1,5 @@
 // Enhanced Typography components with comprehensive design system integration
 open Emotion.Css
-open Emotion.Utils
 
 module Typography = {
   // Typography variant types
