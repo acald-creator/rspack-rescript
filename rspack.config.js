@@ -1,5 +1,3 @@
-const BundleAnalyzerPlugin =
-	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const rspack = require("@rspack/core");
 const ReactRefreshPlugin = require("@rspack/plugin-react-refresh");
 const isProduction = process.env.NODE_ENV === "production";
@@ -9,7 +7,6 @@ const isProduction = process.env.NODE_ENV === "production";
  */
 module.exports = {
 	plugins: [
-		// new BundleAnalyzerPlugin(),
 		new rspack.HtmlRspackPlugin({ template: "./index.html" }),
 		new rspack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(
