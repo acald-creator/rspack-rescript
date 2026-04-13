@@ -76,7 +76,7 @@ module Button = {
           "backgroundColor": "#3d3935"
         },
         ":focus": {
-          "boxShadow": "0 0 0 2px rgba(200, 164, 92, 0.2)"
+          "boxShadow": "0 0 0 3px rgba(200, 164, 92, 0.25)"
         }
       })
     | #outline => css({

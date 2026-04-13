@@ -122,7 +122,7 @@ let injectGlobalStyles = () => {
     }
 
     input::placeholder, textarea::placeholder {
-      color: #5c564e;
+      color: #7a7268;
     }
 
     /* Utility Classes */

@@ -78,7 +78,7 @@ module Button = {
           "color": "#ece4d8"
         }),
         hover({"backgroundColor": "#3d3935"}),
-        focus({"boxShadow": "0 0 0 2px rgba(200, 164, 92, 0.2)"})
+        focus({"boxShadow": Shadow.getFocusShadow("primary")})
       ])
     | #outline => cx([
         css({
