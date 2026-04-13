@@ -169,7 +169,7 @@ module Utils = {
       | (Some(g), Some(c)) => css({
           "display": "grid",
           "gap": Space.getSpacing(g),
-          "gridTemplateColumns": `repeat(${string_of_int(c)}, 1fr)`
+          "gridTemplateColumns": `repeat(${Int.toString(c)}, 1fr)`
         })
       | (Some(g), None) => css({
           "display": "grid",
@@ -177,7 +177,7 @@ module Utils = {
         })
       | (None, Some(c)) => css({
           "display": "grid",
-          "gridTemplateColumns": `repeat(${string_of_int(c)}, 1fr)`
+          "gridTemplateColumns": `repeat(${Int.toString(c)}, 1fr)`
         })
       | (None, None) => css({"display": "grid"})
       }

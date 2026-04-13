@@ -116,7 +116,7 @@ module Layout = {
 
     let cols = (count) => css({
       "display": "grid",
-      "gridTemplateColumns": `repeat(${string_of_int(count)}, 1fr)`
+      "gridTemplateColumns": `repeat(${Int.toString(count)}, 1fr)`
     })
 
     let gap = (size) => {
@@ -162,8 +162,8 @@ module Layout = {
     }
 
     // Grid item utilities
-    let colSpan = (count) => css({"gridColumn": `span ${string_of_int(count)}`})
-    let rowSpan = (count) => css({"gridRow": `span ${string_of_int(count)}`})
+    let colSpan = (count) => css({"gridColumn": `span ${Int.toString(count)}`})
+    let rowSpan = (count) => css({"gridRow": `span ${Int.toString(count)}`})
   }
 
   // Stack utilities (for consistent vertical/horizontal spacing)

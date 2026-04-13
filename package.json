@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "concurrently \"bun run res:dev\" \"rspack serve\"",
     "build": "cross-env NODE_ENV=production rspack build",
-    "res:build": "rescript",
-    "res:dev": "rescript build -w",
-    "res:clean": "rescript clean -with-deps",
+    "res:build": "rescript build",
+    "res:dev": "rescript watch",
+    "res:clean": "rescript clean",
     "tokens:build": "style-dictionary build",
     "tokens:build:light": "style-dictionary build --config config.light.json",
     "tokens:build:dark": "style-dictionary build --config config.dark.json",
@@ -24,11 +24,11 @@
   "dependencies": {
     "@emotion/css": "^11.11.2",
     "@emotion/server": "^11.11.0",
-    "@rescript/core": "^0.5.0",
-    "@rescript/react": "^0.11.0",
+    "@rescript/core": "1.6.1",
+    "@rescript/react": "0.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rescript": "^10.1.4"
+    "rescript": "12.2.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.2.2",
