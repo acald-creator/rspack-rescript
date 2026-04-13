@@ -4,12 +4,12 @@ module Theme = {
   module Colors = {
     // Brand Colors
     let brand = {
-      "primary": "#646cff",
-      "primary-light": "#818cf8",
-      "primary-dark": "#4f46e5",
-      "secondary": "#535bf2",
-      "secondary-light": "#6366f1",
-      "secondary-dark": "#4338ca",
+      "primary": "#c8a45c",
+      "primary-light": "#dfc088",
+      "primary-dark": "#a88540",
+      "secondary": "#c47d4a",
+      "secondary-light": "#d9996c",
+      "secondary-dark": "#a86638",
     }
 
     // Semantic Colors
@@ -58,18 +58,18 @@ module Theme = {
 
     // Theme-aware colors
     let text = {
-      "primary": "rgba(255, 255, 255, 0.87)",
-      "secondary": "rgba(255, 255, 255, 0.6)",
-      "disabled": "rgba(255, 255, 255, 0.38)",
-      "inverse": "#213547",
+      "primary": "#ece4d8",
+      "secondary": "#9a9084",
+      "disabled": "#5c564e",
+      "inverse": "#1a1816",
     }
 
     let background = {
-      "primary": "#242424",
-      "secondary": "#1a1a1a",
-      "elevated": "#2d2d2d",
-      "overlay": "rgba(0, 0, 0, 0.6)",
-      "inverse": "#ffffff",
+      "primary": "#1a1816",
+      "secondary": "#141210",
+      "elevated": "#242120",
+      "overlay": "rgba(0, 0, 0, 0.5)",
+      "inverse": "#f5f0e8",
     }
   }
 
@@ -189,10 +189,10 @@ module Theme = {
     }
 
     let colored = {
-      "primary": "0 0 0 3px rgba(100, 108, 255, 0.1)",
-      "success": "0 0 0 3px rgba(34, 197, 94, 0.1)",
-      "warning": "0 0 0 3px rgba(245, 158, 11, 0.1)",
-      "error": "0 0 0 3px rgba(239, 68, 68, 0.1)",
+      "primary": "0 0 0 3px rgba(200, 164, 92, 0.25)",
+      "success": "0 0 0 3px rgba(34, 197, 94, 0.25)",
+      "warning": "0 0 0 3px rgba(245, 158, 11, 0.25)",
+      "error": "0 0 0 3px rgba(239, 68, 68, 0.25)",
     }
   }
 

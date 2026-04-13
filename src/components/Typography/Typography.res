@@ -14,7 +14,7 @@ module Typography = {
     "margin": "0",
     "fontFamily": "Inter, Avenir, Helvetica, Arial, sans-serif",
     "lineHeight": "1.5",
-    "color": "rgba(255, 255, 255, 0.87)"
+    "color": "#ece4d8"
   })
 
   // Variant styles
@@ -41,7 +41,7 @@ module Typography = {
         "fontSize": "0.875rem",
         "fontWeight": "400",
         "lineHeight": "1.25",
-        "color": "rgba(255, 255, 255, 0.6)"
+        "color": "#9a9084"
       })
     | #overline => css({
         "fontSize": "0.75rem",
@@ -49,7 +49,7 @@ module Typography = {
         "lineHeight": "1.25",
         "letterSpacing": "0.1em",
         "textTransform": "uppercase",
-        "color": "rgba(255, 255, 255, 0.6)"
+        "color": "#9a9084"
       })
     }
   }
