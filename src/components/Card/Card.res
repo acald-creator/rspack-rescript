@@ -23,17 +23,17 @@ module Card = {
   let getVariantStyles = (variant: variant) => {
     switch variant {
     | #elevated => css({
-        "backgroundColor": "#242120",
-        "boxShadow": "0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2)",
-        "border": "1px solid #33302c"
+        "backgroundColor": Color.bgElevated,
+        "boxShadow": Shadow.getShadow("md"),
+        "border": `1px solid ${Color.border}`
       })
     | #outlined => css({
-        "backgroundColor": "#1a1816",
-        "border": "1px solid #33302c",
+        "backgroundColor": Color.bgPrimary,
+        "border": `1px solid ${Color.border}`,
         "boxShadow": "none"
       })
     | #filled => css({
-        "backgroundColor": "#242120",
+        "backgroundColor": Color.bgElevated,
         "border": "1px solid transparent",
         "boxShadow": "none"
       })
@@ -111,7 +111,7 @@ module Card = {
         css({
           "padding": Space.getSpacing("4"),
           "paddingBottom": Space.getSpacing("2"),
-          "borderBottom": "1px solid #33302c"
+          "borderBottom": `1px solid ${Color.border}`
         }),
         className
       ])
@@ -146,7 +146,7 @@ module Card = {
         css({
           "padding": Space.getSpacing("4"),
           "paddingTop": Space.getSpacing("2"),
-          "borderTop": "1px solid #33302c",
+          "borderTop": `1px solid ${Color.border}`,
           "display": "flex",
           "alignItems": "center",
           "justifyContent": "flex-end"

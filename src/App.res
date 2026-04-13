@@ -107,7 +107,7 @@ module HeroSection = {
         {React.string("Modern React Development")}
       </Components.Typography.Display>
 
-      <Components.Typography.Heading level=#h2 size=#xl className={css({"color": "#9a9084", "marginTop": "1rem", "maxWidth": "600px"})}>
+      <Components.Typography.Heading level=#h2 size=#xl className={css({"color": Theme.Theme.Colors.text["secondary"], "marginTop": "1rem", "maxWidth": "600px"})}>
         {React.string("Built with Rspack, ReScript, React, and Bun for lightning-fast development")}
       </Components.Typography.Heading>
 
@@ -180,8 +180,8 @@ module ComponentsSection = {
 
     let sectionStyles = css({
       "padding": "4rem 1rem",
-      "backgroundColor": "rgba(36, 33, 32, 0.5)",
-      "borderTop": "1px solid #33302c"
+      "backgroundColor": `${Theme.Theme.Colors.background["elevated"]}80`,
+      "borderTop": `1px solid ${Theme.Theme.Colors.border["default"]}`
     })
 
     let containerStyles = css({
@@ -202,7 +202,7 @@ module ComponentsSection = {
           {React.string("Component Library")}
         </Components.Typography.Display>
 
-        <Components.Typography.Body size=#lg align=#center className={css({"marginTop": "1rem", "color": "#9a9084"})}>
+        <Components.Typography.Body size=#lg align=#center className={css({"marginTop": "1rem", "color": Theme.Theme.Colors.text["secondary"]})}>
           {React.string("Explore our comprehensive component library with variants, sizes, and states")}
         </Components.Typography.Body>
 
@@ -307,7 +307,7 @@ module App = {
       <FeaturesSection />
       <ComponentsSection />
 
-      <footer className={css({"padding": "2rem", "textAlign": "center", "borderTop": "1px solid #33302c", "marginTop": "2rem"})}>
+      <footer className={css({"padding": "2rem", "textAlign": "center", "borderTop": `1px solid ${Theme.Theme.Colors.border["default"]}`, "marginTop": "2rem"})}>
         <Components.Typography.Caption>
           {React.string("Built with Rspack + ReScript + React + Bun")}
         </Components.Typography.Caption>

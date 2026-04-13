@@ -46,10 +46,10 @@ module Input = {
     switch variant {
     | #default => cx([
         css({
-          "backgroundColor": "#141210",
-          "border": `1px solid #33302c`,
+          "backgroundColor": Color.bgSecondary,
+          "border": `1px solid ${Color.border}`,
           "borderRadius": Border.getRadius("md"),
-          "color": "#ece4d8"
+          "color": Color.textPrimary
         }),
         focus({
           "borderColor": Color.primary,
@@ -58,14 +58,14 @@ module Input = {
       ])
     | #filled => cx([
         css({
-          "backgroundColor": "#242120",
+          "backgroundColor": Color.bgElevated,
           "border": "1px solid transparent",
           "borderRadius": Border.getRadius("md"),
-          "color": "#ece4d8"
+          "color": Color.textPrimary
         }),
-        hover({"backgroundColor": "#33302c"}),
+        hover({"backgroundColor": Color.border}),
         focus({
-          "backgroundColor": "#141210",
+          "backgroundColor": Color.bgSecondary,
           "borderColor": Color.primary,
           "boxShadow": Shadow.getFocusShadow("primary")
         })
@@ -73,9 +73,9 @@ module Input = {
     | #outlined => cx([
         css({
           "backgroundColor": "transparent",
-          "border": `2px solid #33302c`,
+          "border": `2px solid ${Color.border}`,
           "borderRadius": Border.getRadius("md"),
-          "color": "#ece4d8"
+          "color": Color.textPrimary
         }),
         focus({
           "borderColor": Color.primary,
@@ -86,9 +86,9 @@ module Input = {
         css({
           "backgroundColor": "transparent",
           "border": "none",
-          "borderBottom": `2px solid #33302c`,
+          "borderBottom": `2px solid ${Color.border}`,
           "borderRadius": "0",
-          "color": "#ece4d8",
+          "color": Color.textPrimary,
           "padding": "0.5rem 0"
         }),
         focus({
@@ -125,13 +125,13 @@ module Input = {
   })
 
   let getReadOnlyStyles = () => css({
-    "backgroundColor": "#1a1816",
+    "backgroundColor": Color.bgPrimary,
     "cursor": "default"
   })
 
   let getPlaceholderStyles = () => css({
     "::placeholder": {
-      "color": "#5c564e",
+      "color": Color.placeholder,
       "opacity": "1"
     }
   })
