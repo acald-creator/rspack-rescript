@@ -60,22 +60,24 @@ Emotion.Css.injectGlobal(`
 module App = {
   @react.component
   let make = () => {
-    <div>
-      <NavBar.NavBar />
-      <main>
-        <Router />
-      </main>
-      <footer
-        className={css({
-          "padding": "2rem",
-          "textAlign": "center",
-          "borderTop": `1px solid ${Theme.Theme.Colors.border["default"]}`,
-          "marginTop": "2rem",
-        })}>
-        <Typography.Typography.Caption>
-          {React.string("Built with Rspack + ReScript + React + Bun")}
-        </Typography.Typography.Caption>
-      </footer>
-    </div>
+    <RescriptRelayReact.Context.Provider environment={RelayEnv.environment}>
+      <div>
+        <NavBar.NavBar />
+        <main>
+          <Router />
+        </main>
+        <footer
+          className={css({
+            "padding": "2rem",
+            "textAlign": "center",
+            "borderTop": `1px solid ${Theme.Theme.Colors.border["default"]}`,
+            "marginTop": "2rem",
+          })}>
+          <Typography.Typography.Caption>
+            {React.string("Built with Rspack + ReScript + React + Bun")}
+          </Typography.Typography.Caption>
+        </footer>
+      </div>
+    </RescriptRelayReact.Context.Provider>
   }
 }

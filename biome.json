@@ -6,10 +6,10 @@
 		"rules": {
 			"recommended": true
 		},
-		"includes": ["**", "!**/dist", "!**/*.bs.js", "!**/lib"]
+		"includes": ["**", "!**/dist", "!**/*.bs.js", "!**/lib", "!**/__generated__"]
 	},
 	"formatter": {
 		"enabled": true,
-		"includes": ["**", "!**/dist", "!**/*.bs.js", "!**/lib"]
+		"includes": ["**", "!**/dist", "!**/*.bs.js", "!**/lib", "!**/__generated__"]
 	}
 }
