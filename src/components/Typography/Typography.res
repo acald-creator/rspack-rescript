@@ -95,8 +95,7 @@ module Typography = {
     "whiteSpace": "nowrap"
   })
 
-  @react.component
-  let make = (
+  let renderTypography = (
     ~variant: variant=#body,
     ~size: option<size>=?,
     ~weight: option<weight>=?,
@@ -106,7 +105,7 @@ module Typography = {
     ~className: string="",
     ~as_: [#h1 | #h2 | #h3 | #h4 | #h5 | #h6 | #p | #span | #div]=#p,
     ~children,
-    ()
+    (),
   ) => {
     let textClassName = cx([
       baseStyles,
@@ -141,6 +140,22 @@ module Typography = {
     }
   }
 
+  @react.component
+  let make = (
+    ~variant: variant=#body,
+    ~size: option<size>=?,
+    ~weight: option<weight>=?,
+    ~align: align=#left,
+    ~truncate: bool=false,
+    ~color: option<string>=?,
+    ~className: string="",
+    ~as_: [#h1 | #h2 | #h3 | #h4 | #h5 | #h6 | #p | #span | #div]=#p,
+    ~children,
+    ()
+  ) => {
+    renderTypography(~variant, ~size?, ~weight?, ~align, ~truncate, ~color?, ~className, ~as_, ~children, ())
+  }
+
   // Specialized typography components
   module Display = {
     @react.component
@@ -153,16 +168,7 @@ module Typography = {
       ~children,
       ()
     ) => {
-      <Typography.make
-        variant=#display
-        size={size}
-        weight={weight}
-        align={align}
-        ?color
-        className={className}
-        as_=#h1>
-        {children}
-      </Typography.make>
+      renderTypography(~variant=#display, ~size=size, ~weight=weight, ~align, ~color?, ~className, ~as_=#h1, ~children, ())
     }
   }
 
@@ -187,16 +193,7 @@ module Typography = {
       | #h6 => #sm
       }
 
-      <Typography.make
-        variant=#heading
-        size={Belt.Option.getWithDefault(size, defaultSize)}
-        weight={weight}
-        align={align}
-        ?color
-        className={className}
-        as_={level}>
-        {children}
-      </Typography.make>
+      renderTypography(~variant=#heading, ~size=Belt.Option.getWithDefault(size, defaultSize), ~weight=weight, ~align, ~color?, ~className, ~as_=(level :> [#h1 | #h2 | #h3 | #h4 | #h5 | #h6 | #p | #span | #div]), ~children, ())
     }
   }
 
@@ -212,16 +209,7 @@ module Typography = {
       ~children,
       ()
     ) => {
-      <Typography.make
-        variant=#body
-        size={size}
-        weight={weight}
-        align={align}
-        ?color
-        className={className}
-        as_={as_}>
-        {children}
-      </Typography.make>
+      renderTypography(~variant=#body, ~size=size, ~weight=weight, ~align, ~color?, ~className, ~as_=(as_ :> [#h1 | #h2 | #h3 | #h4 | #h5 | #h6 | #p | #span | #div]), ~children, ())
     }
   }
 
@@ -237,16 +225,7 @@ module Typography = {
       ~children,
       ()
     ) => {
-      <Typography.make
-        variant=#caption
-        size={size}
-        weight={weight}
-        align={align}
-        ?color
-        className={className}
-        as_={as_}>
-        {children}
-      </Typography.make>
+      renderTypography(~variant=#caption, ~size=size, ~weight=weight, ~align, ~color?, ~className, ~as_=(as_ :> [#h1 | #h2 | #h3 | #h4 | #h5 | #h6 | #p | #span | #div]), ~children, ())
     }
   }
 
@@ -262,16 +241,7 @@ module Typography = {
       ~children,
       ()
     ) => {
-      <Typography.make
-        variant=#overline
-        size={size}
-        weight={weight}
-        align={align}
-        ?color
-        className={className}
-        as_={as_}>
-        {children}
-      </Typography.make>
+      renderTypography(~variant=#overline, ~size=size, ~weight=weight, ~align, ~color?, ~className, ~as_=(as_ :> [#h1 | #h2 | #h3 | #h4 | #h5 | #h6 | #p | #span | #div]), ~children, ())
     }
   }
 }
