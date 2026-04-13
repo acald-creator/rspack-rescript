@@ -1,18 +1,15 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.2.2/schema.json",
-	"organizeImports": {
-		"enabled": true,
-		"ignore": ["dist", "*.bs.js", "lib"]
-	},
+	"$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
 		"rules": {
 			"recommended": true
 		},
-		"ignore": ["dist", "*.bs.js", "lib"]
+		"includes": ["**", "!**/dist", "!**/*.bs.js", "!**/lib"]
 	},
 	"formatter": {
 		"enabled": true,
-		"ignore": ["dist", "*.bs.js", "lib"]
+		"includes": ["**", "!**/dist", "!**/*.bs.js", "!**/lib"]
 	}
 }
