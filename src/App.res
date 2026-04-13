@@ -157,7 +157,7 @@ module FeaturesSection = {
 
       <div className={gridStyles}>
         {features
-        |> Belt.Array.map(((title, description)) => {
+        ->Belt.Array.map(((title, description)) => {
           <Components.Card key={title} variant=#elevated>
             <Components.Typography.Heading level=#h3 size=#lg>
               {React.string(title)}
@@ -167,7 +167,7 @@ module FeaturesSection = {
             </Components.Typography.Body>
           </Components.Card>
         })
-        |> React.array}
+        ->React.array}
       </div>
     </section>
   }

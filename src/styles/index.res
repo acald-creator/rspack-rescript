@@ -2,7 +2,7 @@
 module Theme = Theme
 module GlobalStyles = GlobalStyles
 module Layout = Layout
-module Components = Components
+module Components = ComponentStyles
 
 // Initialize the design system
 let initialize = () => {
