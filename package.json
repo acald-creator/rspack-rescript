@@ -21,10 +21,6 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
-		"@cosmonexus/oauth-client": "^1.0.0",
-		"@cosmonexus/oauth-core": "1.0.0",
-		"@cosmonexus/oauth-react": "^1.0.0",
-		"@cosmonexus/oauth-tokens": "^1.0.0",
 		"@emotion/css": "^11.13.5",
 		"@emotion/server": "^11.11.0",
 		"@rescript/core": "1.6.1",
