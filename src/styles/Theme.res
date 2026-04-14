@@ -85,6 +85,7 @@ module Theme = {
   module Typography = {
     let fontFamily = {
       "sans": "Inter, Avenir, Helvetica, Arial, sans-serif",
+      "serif": "'Playfair Display', Georgia, 'Times New Roman', serif",
       "mono": "'Fira Code', 'Monaco', 'Cascadia Code', monospace",
     }
 

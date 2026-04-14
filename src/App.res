@@ -8,53 +8,6 @@ Emotion.Css.injectGlobal(`
   width: 100%;
   min-height: 100vh;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em ${Theme.Theme.Colors.brand["primary"]}aa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-/* Hero section gradients */
-.hero-gradient {
-  background: linear-gradient(135deg, ${Theme.Theme.Colors.brand["primary"]} 0%, ${Theme.Theme.Colors.brand["secondary"]} 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero-gradient {
-    font-size: 2.5rem;
-  }
-
-  .logo {
-    height: 4em;
-    padding: 1em;
-  }
-}
 `)
 
 module App = {
@@ -63,17 +16,19 @@ module App = {
     <AuthContext.Provider>
       <AuthContext.UserProvider>
         <RescriptRelayReact.Context.Provider environment={RelayEnv.environment}>
-          <div>
+          <div className={css({"display": "flex", "flexDirection": "column", "minHeight": "100vh"})}>
             <NavBar.NavBar />
-            <main>
+            <main className={css({"flex": "1"})}>
               <Router />
             </main>
             <footer
               className={css({
-                "padding": "2rem",
+                "padding": "2rem 1rem",
                 "textAlign": "center",
+                "maxWidth": "680px",
+                "margin": "0 auto",
+                "width": "100%",
                 "borderTop": `1px solid ${Theme.Theme.Colors.border["default"]}`,
-                "marginTop": "2rem",
               })}>
               <Typography.Typography.Caption>
                 {React.string("Built with Rspack + ReScript + React + Bun")}

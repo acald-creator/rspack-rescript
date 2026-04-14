@@ -5,6 +5,10 @@ module Components = {
   module Input = Input.Input
   module Card = Card.Card
   module Typography = Typography.Typography
+  module Divider = Divider.Divider
+  module Avatar = Avatar.Avatar
+  module Badge = Badge.Badge
+  module Blockquote = Blockquote.Blockquote
 }
 
 @react.component
@@ -113,6 +117,51 @@ let make = () => {
               {React.string("Caption text for additional information")}
             </Components.Typography.Caption>
           </div>
+        </Components.Card.Body>
+      </Components.Card>
+    </div>
+    <Components.Divider label="Editorial Components" />
+    <div className={demoGridStyles}>
+      <Components.Card variant=#outlined>
+        <Components.Card.Header>
+          <Components.Typography.Heading level=#h3>
+            {React.string("Avatar")}
+          </Components.Typography.Heading>
+        </Components.Card.Header>
+        <Components.Card.Body>
+          <div className={css({"display": "flex", "gap": "1rem", "alignItems": "center"})}>
+            <Components.Avatar name="Alice Chen" size=#sm />
+            <Components.Avatar name="Bob Martinez" size=#md />
+            <Components.Avatar name="Carol Davis" size=#lg />
+          </div>
+        </Components.Card.Body>
+      </Components.Card>
+      <Components.Card variant=#outlined>
+        <Components.Card.Header>
+          <Components.Typography.Heading level=#h3>
+            {React.string("Badge")}
+          </Components.Typography.Heading>
+        </Components.Card.Header>
+        <Components.Card.Body>
+          <div className={css({"display": "flex", "flexWrap": "wrap", "gap": "0.5rem"})}>
+            <Components.Badge> {React.string("Default")} </Components.Badge>
+            <Components.Badge variant=#primary> {React.string("ReScript")} </Components.Badge>
+            <Components.Badge variant=#success> {React.string("Published")} </Components.Badge>
+            <Components.Badge variant=#warning> {React.string("Draft")} </Components.Badge>
+            <Components.Badge variant=#error> {React.string("Archived")} </Components.Badge>
+          </div>
+        </Components.Card.Body>
+      </Components.Card>
+      <Components.Card variant=#outlined>
+        <Components.Card.Header>
+          <Components.Typography.Heading level=#h3>
+            {React.string("Blockquote")}
+          </Components.Typography.Heading>
+        </Components.Card.Header>
+        <Components.Card.Body>
+          <Components.Blockquote cite="Rich Hickey">
+            {React.string("Simplicity is a prerequisite for reliability.")}
+          </Components.Blockquote>
         </Components.Card.Body>
       </Components.Card>
     </div>

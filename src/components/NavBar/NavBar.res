@@ -15,8 +15,7 @@ module NavBar = {
       "display": "flex",
       "alignItems": "center",
       "justifyContent": "space-between",
-      "padding": "1rem 2rem",
-      "borderBottom": `1px solid ${Color.border}`,
+      "padding": "1.5rem 2rem",
       "backgroundColor": Color.bgPrimary,
       "position": "sticky",
       "top": "0",
@@ -24,8 +23,10 @@ module NavBar = {
     })
 
     let brandStyles = css({
-      "fontSize": "1.25rem",
-      "fontWeight": "700",
+      "fontFamily": Theme.Theme.Typography.fontFamily["serif"],
+      "fontSize": "1.5rem",
+      "fontWeight": "400",
+      "letterSpacing": "-0.02em",
       "color": Color.textPrimary,
       "cursor": "pointer",
       "textDecoration": "none",
@@ -33,20 +34,20 @@ module NavBar = {
 
     let linksStyles = css({
       "display": "flex",
-      "gap": "1.5rem",
+      "gap": "2rem",
       "alignItems": "center",
     })
 
     let linkStyles = (~active) =>
       css({
-        "color": active ? Color.primary : Color.textSecondary,
+        "color": active ? Color.textPrimary : Color.textSecondary,
         "textDecoration": "none",
         "fontWeight": active ? "600" : "400",
-        "fontSize": "0.9375rem",
+        "fontSize": "0.75rem",
+        "letterSpacing": "0.08em",
+        "textTransform": "uppercase",
         "cursor": "pointer",
         "transition": "color 200ms ease-out",
-        "borderBottom": active ? `2px solid ${Color.primary}` : "2px solid transparent",
-        "paddingBottom": "0.25rem",
       })
 
     let handleNav = (path, evt: ReactEvent.Mouse.t) => {
@@ -56,7 +57,7 @@ module NavBar = {
 
     <nav className={navStyles}>
       <a className={brandStyles} href="/" onClick={evt => handleNav("/", evt)}>
-        {React.string("Rspack + ReScript")}
+        {React.string("The Journal")}
       </a>
       <div className={linksStyles}>
         <a

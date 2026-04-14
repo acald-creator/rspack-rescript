@@ -16,10 +16,8 @@ let make = () => {
   })
 
   let cardStyles = css({
-    "backgroundColor": Color.bgElevated,
-    "border": `1px solid ${Color.border}`,
-    "borderRadius": "0.5rem",
-    "padding": "2rem",
+    "borderTop": `2px solid ${Color.primary}`,
+    "padding": "2rem 0",
     "marginTop": "2rem",
   })
 

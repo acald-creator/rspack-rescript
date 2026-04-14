@@ -15,29 +15,42 @@ module PostsQuery = %relay(`
   }
 `)
 
-module PostCard = {
+module PostItem = {
   module Typography = Typography.Typography
-  module Card = Card.Card
 
   @react.component
   let make = (~title, ~body, ~authorName, ~createdAt) => {
-    <Card variant=#outlined className={css({"marginBottom": "1rem"})}>
-      <Card.Header>
-        <Typography.Heading level=#h3 size=#lg> {React.string(title)} </Typography.Heading>
-      </Card.Header>
-      <Card.Body>
-        <Typography.Body> {React.string(body)} </Typography.Body>
-        <div
-          className={css({
-            "display": "flex",
-            "justifyContent": "space-between",
-            "marginTop": "1rem",
-          })}>
-          <Typography.Caption> {React.string(authorName)} </Typography.Caption>
-          <Typography.Caption> {React.string(createdAt)} </Typography.Caption>
-        </div>
-      </Card.Body>
-    </Card>
+    let itemStyles = css({
+      "borderBottom": `1px solid ${Color.border}`,
+      "paddingBottom": "2rem",
+      "marginBottom": "2rem",
+    })
+
+    let metaStyles = css({
+      "display": "flex",
+      "gap": "0.5rem",
+      "alignItems": "center",
+      "marginBottom": "0.75rem",
+    })
+
+    let dotStyles = css({
+      "color": Color.textSecondary,
+      "fontSize": "0.75rem",
+    })
+
+    <article className={itemStyles}>
+      <div className={metaStyles}>
+        <Typography.Overline> {React.string(authorName)} </Typography.Overline>
+        <span className={dotStyles}> {React.string({`\u00B7`})} </span>
+        <Typography.Overline> {React.string(createdAt)} </Typography.Overline>
+      </div>
+      <Typography.Heading level=#h2 size=#"2xl">
+        {React.string(title)}
+      </Typography.Heading>
+      <Typography.Body className={css({"color": Color.textSecondary, "margin": "0"})}>
+        {React.string(body)}
+      </Typography.Body>
+    </article>
   }
 }
 
@@ -51,7 +64,7 @@ module PostsList = {
     <div>
       {data.posts
       ->Array.map(post => {
-        <PostCard
+        <PostItem
           key={post.id}
           title={post.title}
           body={post.body}
@@ -66,34 +79,33 @@ module PostsList = {
 
 module ServerUnavailable = {
   module Typography = Typography.Typography
-  module Card = Card.Card
 
   @react.component
   let make = () => {
-    <Card variant=#outlined>
-      <Card.Body>
-        <Typography.Heading level=#h3>
-          {React.string("GraphQL Server Not Running")}
-        </Typography.Heading>
-        <Typography.Body className={css({"color": Color.textSecondary})}>
-          {React.string(
-            "The Posts page requires the mock GraphQL server. Start it locally with:",
-          )}
-        </Typography.Body>
-        <code
-          className={css({
-            "display": "block",
-            "padding": "0.75rem 1rem",
-            "marginTop": "0.75rem",
-            "backgroundColor": Color.bgElevated,
-            "borderRadius": "0.375rem",
-            "fontSize": "0.875rem",
-            "color": Color.primary,
-          })}>
-          {React.string("bun run dev:server")}
-        </code>
-      </Card.Body>
-    </Card>
+    let containerStyles = css({
+      "borderTop": `2px solid ${Color.primary}`,
+      "padding": "2rem 0",
+    })
+
+    <div className={containerStyles}>
+      <Typography.Heading level=#h3>
+        {React.string("GraphQL Server Not Running")}
+      </Typography.Heading>
+      <Typography.Body className={css({"color": Color.textSecondary})}>
+        {React.string("Start the mock server to see posts:")}
+      </Typography.Body>
+      <code
+        className={css({
+          "display": "block",
+          "padding": "0.75rem 1rem",
+          "marginTop": "0.75rem",
+          "backgroundColor": Color.bgElevated,
+          "fontSize": "0.875rem",
+          "color": Color.primary,
+        })}>
+        {React.string("bun run dev:server")}
+      </code>
+    </div>
   }
 }
 
@@ -103,19 +115,17 @@ module Typography = Typography.Typography
 let make = () => {
   let containerStyles = css({
     "padding": "4rem 1rem",
-    "maxWidth": "800px",
+    "maxWidth": "680px",
     "margin": "0 auto",
   })
 
   <div className={containerStyles}>
-    <Typography.Display size=#"3xl"> {React.string("Posts")} </Typography.Display>
-    <Typography.Body
-      className={css({"marginTop": "0.5rem", "marginBottom": "2rem", "color": Color.textSecondary})}>
-      {React.string("Data fetched from the mock GraphQL server via Relay.")}
-    </Typography.Body>
+    <Typography.Overline className={css({"marginBottom": "2rem"})}>
+      {React.string("Recent Writing")}
+    </Typography.Overline>
     <RescriptReactErrorBoundary fallback={_ => <ServerUnavailable />}>
       <React.Suspense
-        fallback={<Typography.Body> {React.string("Loading posts...")} </Typography.Body>}>
+        fallback={<Typography.Body className={css({"color": Color.textSecondary})}> {React.string("Loading...")} </Typography.Body>}>
         <PostsList />
       </React.Suspense>
     </RescriptReactErrorBoundary>
