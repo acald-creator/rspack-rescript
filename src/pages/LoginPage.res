@@ -54,6 +54,13 @@ let make = () => {
           onClick={_ => auth.login()->ignore}>
           {React.string("Sign in with OAuth")}
         </Button>
+        <Typography.Caption className={css({"marginTop": "1.5rem", "display": "block"})}>
+          {React.string("Requires the mock server. Run ")}
+          <code className={css({"fontSize": "0.8125rem", "color": Color.primary})}>
+            {React.string("bun run dev:server")}
+          </code>
+          {React.string(" locally.")}
+        </Typography.Caption>
       </div>
     </div>
   }
