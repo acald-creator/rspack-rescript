@@ -59,8 +59,9 @@ module UserProvider = {
     }
 
     let logout = () => {
-      cosmoAuth.logout()
+      cosmoAuth.clearState()
       setState(_ => LoggedOut)
+      RescriptReactRouter.push("/login")
     }
 
     let handleCallback = async (search: string) => {

@@ -7,10 +7,12 @@ type tokenSet = {
   refreshToken: option<string>,
 }
 
+type logoutOptions = {postLogoutRedirectUri?: string}
+
 type authContextValue = {
   client: OAuthPkce.oauthClient,
   login: OAuthPkce.authorizeOptions => promise<unit>,
-  logout: unit => unit,
+  logout: logoutOptions => unit,
   handleCallback: string => OAuthPkce.callbackResult,
   handleTokenCallback: string => promise<tokenSet>,
   getTokenEndpoint: unit => string,

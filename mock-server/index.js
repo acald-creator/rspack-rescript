@@ -146,6 +146,15 @@ const server = createServer((req, res) => {
 		return;
 	}
 
+	// Mock OAuth logout endpoint
+	if (url.pathname === "/oauth/logout") {
+		const postLogoutUri =
+			url.searchParams.get("post_logout_redirect_uri") || "http://localhost:8080";
+		res.writeHead(302, { Location: postLogoutUri });
+		res.end();
+		return;
+	}
+
 	// CORS preflight for token endpoint
 	if (url.pathname === "/oauth/token" && req.method === "OPTIONS") {
 		res.writeHead(204, {
