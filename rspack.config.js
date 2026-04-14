@@ -35,6 +35,12 @@ module.exports = {
 				use: ["@svgr/webpack"],
 			},
 			{
+				test: /\.m?js$/,
+				resolve: {
+					fullySpecified: false,
+				},
+			},
+			{
 				test: /\.[jt]sx?$/,
 				use: {
 					loader: "builtin:swc-loader",

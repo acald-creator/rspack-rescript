@@ -1,28 +1,28 @@
 type Query {
-  posts: [Post!]!
-  post(id: ID!): Post
-  me: User
+	posts: [Post!]!
+	post(id: ID!): Post
+	me: User
 }
 
 type Mutation {
-  createPost(title: String!, body: String!): Post!
+	createPost(title: String!, body: String!): Post!
 }
 
 type User implements Node {
-  id: ID!
-  name: String!
-  email: String!
-  avatarUrl: String
+	id: ID!
+	name: String!
+	email: String!
+	avatarUrl: String
 }
 
 type Post implements Node {
-  id: ID!
-  title: String!
-  body: String!
-  createdAt: String!
-  author: User!
+	id: ID!
+	title: String!
+	body: String!
+	createdAt: String!
+	author: User!
 }
 
 interface Node {
-  id: ID!
+	id: ID!
 }
