@@ -18,9 +18,9 @@ let injectGlobalStyles = () => {
 
     body {
       font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-      font-size: 1rem;
+      font-size: 1.0625rem;
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.75;
       color: #ece4d8;
       background-color: #1a1816;
       min-height: 100vh;
@@ -30,18 +30,20 @@ let injectGlobalStyles = () => {
 
     /* Typography Elements */
     h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
       color: #ece4d8;
-      font-weight: 600;
-      line-height: 1.25;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
 
-    h1 { font-size: 2.25rem; font-weight: 700; }
-    h2 { font-size: 1.875rem; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
     h3 { font-size: 1.5rem; }
     h4 { font-size: 1.25rem; }
     h5 { font-size: 1.125rem; }
-    h6 { font-size: 1rem; font-weight: 500; }
+    h6 { font-size: 1rem; }
 
     p {
       margin-bottom: 1rem;
@@ -59,6 +61,7 @@ let injectGlobalStyles = () => {
     a:hover {
       color: #dfc088;
       text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     a:focus {

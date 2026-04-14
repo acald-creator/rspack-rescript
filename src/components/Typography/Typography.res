@@ -11,8 +11,8 @@ module Typography = {
   // Base typography styles
   let baseStyles = css({
     "margin": "0",
-    "fontFamily": "Inter, Avenir, Helvetica, Arial, sans-serif",
-    "lineHeight": "1.5",
+    "fontFamily": Theme.Theme.Typography.fontFamily["sans"],
+    "lineHeight": "1.75",
     "color": Theme.Theme.Colors.text["primary"]
   })
 
@@ -20,33 +20,35 @@ module Typography = {
   let getVariantStyles = (variant: variant) => {
     switch variant {
     | #display => css({
+        "fontFamily": Theme.Theme.Typography.fontFamily["serif"],
         "fontSize": "3rem",
-        "fontWeight": "700",
-        "lineHeight": "1.1",
-        "letterSpacing": "-0.025em"
+        "fontWeight": "400",
+        "lineHeight": "1.15",
+        "letterSpacing": "-0.02em"
       })
     | #heading => css({
+        "fontFamily": Theme.Theme.Typography.fontFamily["serif"],
         "fontSize": "1.5rem",
-        "fontWeight": "600",
-        "lineHeight": "1.25",
-        "letterSpacing": "-0.025em"
+        "fontWeight": "400",
+        "lineHeight": "1.2",
+        "letterSpacing": "-0.02em"
       })
     | #body => css({
-        "fontSize": "1rem",
+        "fontSize": "1.0625rem",
         "fontWeight": "400",
-        "lineHeight": "1.5"
+        "lineHeight": "1.75"
       })
     | #caption => css({
-        "fontSize": "0.875rem",
+        "fontSize": "0.8125rem",
         "fontWeight": "400",
-        "lineHeight": "1.25",
+        "lineHeight": "1.5",
         "color": Theme.Theme.Colors.text["secondary"]
       })
     | #overline => css({
-        "fontSize": "0.75rem",
+        "fontSize": "0.6875rem",
         "fontWeight": "500",
         "lineHeight": "1.25",
-        "letterSpacing": "0.1em",
+        "letterSpacing": "0.15em",
         "textTransform": "uppercase",
         "color": Theme.Theme.Colors.text["secondary"]
       })

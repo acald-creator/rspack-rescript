@@ -15,7 +15,7 @@ module Card = {
     "flexDirection": "column",
     "minWidth": "0",
     "wordWrap": "break-word",
-    "borderRadius": Border.getRadius("lg"),
+    "borderRadius": Border.getRadius("sm"),
     "transition": Animate.getDuration("fast") ++ " ease-out"
   })
 
