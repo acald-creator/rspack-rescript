@@ -70,8 +70,20 @@ let startAuth = async (config: config) => {
 
 @val external fetchRaw: (string, {..}) => promise<{..}> = "fetch"
 
+let clearPkceStorage: unit => unit = %raw(`
+  function() {
+    sessionStorage.removeItem("pkce_code_verifier");
+    sessionStorage.removeItem("pkce_state");
+  }
+`)
+
 let exchangeCode = async (config: config, code: string) => {
   let codeVerifier: string = %raw(`sessionStorage.getItem("pkce_code_verifier") || ""`)
+
+  if String.length(codeVerifier) === 0 {
+    clearPkceStorage()
+    JsError.throwWithMessage("PKCE code verifier not found in session storage")
+  }
 
   let body =
     [
@@ -96,13 +108,26 @@ let exchangeCode = async (config: config, code: string) => {
   )
   let json = await response["json"]()
 
-  ignore(%raw(`sessionStorage.removeItem("pkce_code_verifier")`))
-  ignore(%raw(`sessionStorage.removeItem("pkce_state")`))
+  clearPkceStorage()
 
-  {
-    accessToken: json["access_token"],
-    tokenType: json["token_type"],
-    expiresIn: json["expires_in"],
+  let ok: bool = response["ok"]
+  if !ok {
+    let status: int = response["status"]
+    let errorMsg: string = json["error"]
+    JsError.throwWithMessage(`Token exchange failed (${Int.toString(status)}): ${errorMsg}`)
+  }
+
+  let accessToken: Nullable.t<string> = json["access_token"]
+  let tokenType: Nullable.t<string> = json["token_type"]
+  let expiresIn: Nullable.t<int> = json["expires_in"]
+
+  switch (accessToken->Nullable.toOption, tokenType->Nullable.toOption, expiresIn->Nullable.toOption) {
+  | (Some(at), Some(tt), Some(ei)) => {
+      accessToken: at,
+      tokenType: tt,
+      expiresIn: ei,
+    }
+  | _ => JsError.throwWithMessage("Token response missing required fields (access_token, token_type, expires_in)")
   }
 }
 
