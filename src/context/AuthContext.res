@@ -38,6 +38,19 @@ module ContextProvider = {
 
 let setWindowLocation: string => unit = %raw(`function(url) { window.location.href = url }`)
 
+type callbackParams = {code: Nullable.t<string>, state: Nullable.t<string>}
+
+let parseCallbackParams: string => callbackParams = %raw(`
+  function(search) {
+    var url = new URL("http://localhost" + search);
+    return { code: url.searchParams.get("code"), state: url.searchParams.get("state") };
+  }
+`)
+
+let getStoredState: unit => Nullable.t<string> = %raw(`
+  function() { return sessionStorage.getItem("pkce_state"); }
+`)
+
 module Provider = {
   @react.component
   let make = (~children) => {
@@ -53,18 +66,14 @@ module Provider = {
       RescriptReactRouter.push("/login")
     }
 
-    let parseCode: string => Nullable.t<string> = %raw(`
-      function(search) {
-        var url = new URL("http://localhost" + search);
-        return url.searchParams.get("code");
-      }
-    `)
-
     let handleCallback = async (search: string) => {
-      let code: option<string> = parseCode(search)->Nullable.toOption
+      let params = parseCallbackParams(search)
+      let code = params.code->Nullable.toOption
+      let returnedState = params.state->Nullable.toOption
+      let storedState = getStoredState()->Nullable.toOption
 
-      switch code {
-      | Some(c) => {
+      switch (code, returnedState, storedState) {
+      | (Some(c), Some(rs), Some(ss)) if rs === ss => {
           let _tokenSet = await OAuthPkce.exchangeCode(oauthConfig, c)
           // In production, decode the JWT or call /userinfo
           setState(_ => LoggedIn({
@@ -73,7 +82,9 @@ module Provider = {
             email: "alice@example.com",
           }))
         }
-      | None => ()
+      | (_, Some(_), _) =>
+        Console.error("OAuth callback state mismatch — possible CSRF attack. Aborting.")
+      | _ => ()
       }
     }
 
